@@ -1,0 +1,30 @@
+﻿namespace Projekt_MVC.Models
+{
+    public enum SalonOpenHoursEnum
+    {
+        OpenHours_8_00_16_00,
+        OpenHours_9_00_17_00,
+        OpenHours_10_00_18_00,
+        OpenHours_11_00_19_00,
+        OpenHours_12_00_20_00,
+        OpenHours_13_00_21_00,
+        OpenHours_14_00_22_00,
+        OpenHours_15_00_23_00,
+        OpenHours_16_00_24_00,
+        OpenHours_17_00_01_00,
+        OpenHours_18_00_02_00,
+        OpenHours_19_00_03_00,
+        OpenHours_20_00_04_00,
+        OpenHours_21_00_05_00,
+        OpenHours_22_00_06_00,
+        OpenHours_23_00_07_00,
+        OpenHours_24_00_08_00,
+        OpenHours_01_00_09_00,
+        OpenHours_02_00_10_00,
+        OpenHours_03_00_11_00,
+        OpenHours_04_00_12_00,
+        OpenHours_05_00_13_00,
+        OpenHours_06_00_14_00,
+        OpenHours_07_00_15_00,
+    }
+}
