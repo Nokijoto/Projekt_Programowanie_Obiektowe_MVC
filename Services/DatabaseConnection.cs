@@ -1,5 +1,4 @@
 ﻿using Npgsql;
-
 namespace Projekt_MVC.Services
 {
     public class DatabaseConnection
