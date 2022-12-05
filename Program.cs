@@ -1,9 +1,23 @@
+using Microsoft.EntityFrameworkCore;
+using Projekt_MVC.Context;
+using Projekt_MVC.Models;
+using Projekt_MVC.Services;
+
 var builder = WebApplication.CreateBuilder(args);
 
 // Add services to the container.
 builder.Services.AddControllersWithViews();
-
+builder.Services.AddDbContext<MainContext>(options =>
+    options.UseSqlite(builder.Configuration.GetConnectionString("CarContext")));
+builder.Services.AddScoped<ICarService, CarService>();
 var app = builder.Build();
+
+using (var scope = app.Services.CreateScope())
+{
+
+    var services = scope.ServiceProvider;
+    SeedData.Initialize(services);
+}
 
 // Configure the HTTP request pipeline.
 if (!app.Environment.IsDevelopment())
