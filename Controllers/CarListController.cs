@@ -11,7 +11,7 @@ namespace Projekt_MVC.Controllers
         public CarListController(ILogger<CarListController> logger, ICarService CarService)
         {
             _logger = logger;
-            _CarService = carService;
+            _CarService = CarService;
         }
         public IActionResult Index()
         {
@@ -26,9 +26,9 @@ namespace Projekt_MVC.Controllers
         {
             return View();
         }
-        public IActionResult CreateNewCar(int id, string name, string city, EngineEnum gender)
+        public IActionResult CreateNewCar(int id, string name, string model, string color, string year, string price, string description, EngineEnum engine, int horsePower)
         {
-            _personService.CreatePerson(id, name, city, gender);
+            _CarService.CreateCar(id, name, model, color,year,price,description, engine, horsePower);
             return RedirectToAction("Index");
         }
     }

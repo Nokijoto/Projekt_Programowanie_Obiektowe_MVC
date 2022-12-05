@@ -1,3 +1,8 @@
+using Microsoft.EntityFrameworkCore;
+using Projekt_MVC.Context;
+using Projekt_MVC.Models;
+using Projekt_MVC.Services;
+
 var builder = WebApplication.CreateBuilder(args);
 
 // Add services to the container.

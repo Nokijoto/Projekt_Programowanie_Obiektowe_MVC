@@ -1,4 +1,5 @@
-﻿using Projekt_MVC.Models;
+﻿using Microsoft.EntityFrameworkCore;
+using Projekt_MVC.Models;
 namespace Projekt_MVC.Context
 {
     public class MainContext : DbContext
@@ -6,6 +7,7 @@ namespace Projekt_MVC.Context
 
         public MainContext(DbContextOptions options) : base(options)
         {
+            
         }
 
 
