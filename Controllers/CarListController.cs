@@ -1,6 +1,7 @@
 ﻿using Projekt_MVC.Services;
 using Projekt_MVC.Models;
 using Microsoft.AspNetCore.Mvc;
+using System.Net;
 
 namespace Projekt_MVC.Controllers
 {
@@ -31,5 +32,27 @@ namespace Projekt_MVC.Controllers
             _CarService.CreateCar(id, name, model, color,year,price,description, engine, horsePower);
             return RedirectToAction("Index");
         }
+        public IActionResult DeleteCar(int id)
+        {
+            if (id == null)
+            {
+                return NotFound();
+            }
+            _CarService.DeleteCar(id);
+            return RedirectToAction("Index");
+        }
+       
+
+        //if (id == null)
+        //{
+        //    return new HttpStatusCodeResult(HttpStatusCode.BadRequest);
+        //}
+        //Movie movie = db.Movies.Find(id);
+        //if (movie == null)
+        //{
+        //    return HttpNotFound();
+        //}
+
+
     }
 }

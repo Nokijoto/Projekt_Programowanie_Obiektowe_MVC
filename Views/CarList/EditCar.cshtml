@@ -1,7 +1,9 @@
-﻿@{
-    ViewData["Title"] = "Create Car";
+﻿@*
+    For more information on enabling MVC for empty projects, visit https://go.microsoft.com/fwlink/?LinkID=397860
+*@
+@{
 }
-<form method="post" asp-controller="CarList" asp-action="CreateNewCar">
+<form method="post" asp-controller="CarList" asp-action="EditCar">
 
 
     @* 
@@ -16,10 +18,10 @@
         public string Description { get; set; }
         public EngineEnum Engine { get; set; }
         public int HorsePower { get; set; }
-    *@
+    *@  
     <div class="form-group">
         <label for="id">ID</label>
-        <input type="number" class="form-control" id="id" name="id" placeholder="Enter ID">
+         <input type="hidden" asp-for="Item.ID" />
     </div>
     <div class="form-group">
         <label for="make">Name</label>

@@ -36,5 +36,17 @@ namespace Projekt_MVC.Services
             _CarService.Cars.Add(newCar);
             _CarService.SaveChanges();
         }
+        public async void DeleteCar(int id)
+        {
+           
+            CarModel Car;
+            var cart =_CarService.Cars.Find(id);
+            Car = cart;
+            if (Car != null)
+            {
+            _CarService.Cars.Remove(Car);
+            _CarService.SaveChanges();
+            }
+        }
     }
 }

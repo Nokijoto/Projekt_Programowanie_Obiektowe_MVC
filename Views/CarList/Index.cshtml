@@ -82,7 +82,10 @@
                      <th scope="row">@item.Model</th>
                      <th scope="row">@item.Price</th>
                      <th scope="row">@item.Year</th>
-                     
+                     <td>
+                         <a asp-controller="CarList" asp-action="DeleteCar" asp-route-id="@item.ID">Delete</a>
+                        <a asp-controller="CarList" asp-action="EditCar" asp-route-id="@item.ID">Edit</a>
+                     </td>
                 </tr>
             }
         </tbody>
@@ -92,7 +95,7 @@
 
     <div class="text-center">
         <a class="btn btn-primary btn-sm text-right" asp-area="" asp-controller="CarList" asp-action="NewCar" role="button">Dodaj samochód</a>
-        <button type="button" class="btn btn-primary btn-sm text-right">Usuń samochód</button>
+        <a class="btn btn-primary btn-sm text-right" asp-area="" asp-controller="CarList" asp-action="DeleteCar" role="button">Usuń samochód</a>
         <button type="button" class="btn btn-primary btn-sm text-right">Zaktualizuj samochód</button>
     </div>
 </div>
