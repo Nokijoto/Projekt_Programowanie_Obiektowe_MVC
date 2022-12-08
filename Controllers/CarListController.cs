@@ -2,6 +2,7 @@
 using Projekt_MVC.Models;
 using Microsoft.AspNetCore.Mvc;
 using System.Net;
+using System.Security.Policy;
 
 namespace Projekt_MVC.Controllers
 {
@@ -41,8 +42,16 @@ namespace Projekt_MVC.Controllers
             _CarService.DeleteCar(id);
             return RedirectToAction("Index");
         }
-       
 
+        public IActionResult EditCar(int id, string name, string model, string color, string year, string price, string description, EngineEnum engine, int horsePower)
+        {
+            if (id == null)
+            {
+                return NotFound();
+            }
+            _CarService.EditCar(id, name, model, color, year, price, description, engine, horsePower);
+            return RedirectToAction("EditCar");
+        }
         //if (id == null)
         //{
         //    return new HttpStatusCodeResult(HttpStatusCode.BadRequest);

@@ -48,5 +48,23 @@ namespace Projekt_MVC.Services
             _CarService.SaveChanges();
             }
         }
+        public void EditCar(int id, string name, string model, string color, string year, string price, string description, EngineEnum engine, int horsePower)
+        {
+            var Car = _CarService.Cars.Find(id);
+            if (Car != null)
+            {
+                Car.ID = id;
+                Car.Name = name;
+                Car.Model = model;
+                Car.Color = color;
+                Car.Year = year;
+                Car.Price = price;
+                Car.Description = description;
+                Car.Engine = engine;
+                Car.HorsePower = horsePower;
+                _CarService.SaveChanges();
+            }
+        }
+
     }
 }
