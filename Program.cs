@@ -1,7 +1,7 @@
 using Microsoft.EntityFrameworkCore;
 using Projekt_MVC.Context;
 using Projekt_MVC.Models;
-using Projekt_MVC.Services;
+using Projekt_MVC.Services.Car;
 
 var builder = WebApplication.CreateBuilder(args);
 
