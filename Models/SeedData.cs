@@ -1,5 +1,6 @@
 ﻿using Microsoft.EntityFrameworkCore;
 using Projekt_MVC.Context;
+using Projekt_MVC.Models.Car;
 
 namespace Projekt_MVC.Models
 {
