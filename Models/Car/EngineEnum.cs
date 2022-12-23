@@ -1,4 +1,4 @@
-﻿namespace Projekt_MVC.Models
+﻿namespace Projekt_MVC.Models.Car
 {
     public enum EngineEnum
     {

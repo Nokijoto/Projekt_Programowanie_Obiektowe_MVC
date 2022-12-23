@@ -1,4 +1,4 @@
-﻿namespace Projekt_MVC.Models
+﻿namespace Projekt_MVC.Models.Salon
 {
     public class SalonModel
     {
@@ -12,7 +12,7 @@
         public string Email { get; set; }
         public string OpenHours { get; set; }
         public string OpenDays { get; set; }
-        
-       
+
+
     }
 }

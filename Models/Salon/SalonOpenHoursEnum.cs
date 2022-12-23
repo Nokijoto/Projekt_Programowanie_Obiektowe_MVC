@@ -1,4 +1,4 @@
-﻿namespace Projekt_MVC.Models
+﻿namespace Projekt_MVC.Models.Salon
 {
     public enum SalonOpenHoursEnum
     {
