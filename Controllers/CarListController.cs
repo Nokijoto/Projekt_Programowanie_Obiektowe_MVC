@@ -1,12 +1,10 @@
 ﻿using Microsoft.AspNetCore.Mvc;
 using System.Net;
-<<<<<<< HEAD
-using System.Security.Policy;
-=======
+
 using Projekt_MVC.Models.Car;
 using Projekt_MVC.Services.Car;
 using Microsoft.AspNetCore.Mvc.Rendering;
->>>>>>> master
+
 
 namespace Projekt_MVC.Controllers
 {
@@ -67,7 +65,6 @@ namespace Projekt_MVC.Controllers
             _CarService.DeleteCar(id);
             return RedirectToAction("Index");
         }
-<<<<<<< HEAD
 
         public IActionResult EditCar(int id, string name, string model, string color, string year, string price, string description, EngineEnum engine, int horsePower)
         {
@@ -87,7 +84,7 @@ namespace Projekt_MVC.Controllers
         //{
         //    return HttpNotFound();
         //}
-=======
+
        
         public IActionResult EditCar(int id)
         {
@@ -121,7 +118,7 @@ namespace Projekt_MVC.Controllers
             _CarService.EditCar(id, name, model, color, year, price, description, engine, horsePower);
             return RedirectToAction("Index");
         }
->>>>>>> master
+
 
 
     }

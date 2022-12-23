@@ -1,5 +1,7 @@
 ﻿using Projekt_MVC.Models;
 using Projekt_MVC.Context;
+using Projekt_MVC.Models.Car;
+using Projekt_MVC.Services.Car;
 namespace Projekt_MVC.Services
 {
     public class CarService : ICarService
