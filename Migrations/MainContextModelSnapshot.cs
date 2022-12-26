@@ -16,7 +16,40 @@ namespace ProjektMVC.Migrations
 #pragma warning disable 612, 618
             modelBuilder.HasAnnotation("ProductVersion", "7.0.0");
 
-            modelBuilder.Entity("Projekt_MVC.Models.CarModel", b =>
+            modelBuilder.Entity("Projekt_MVC.Models.TestDriveModel", b =>
+            {
+                b.Property<int>("ID")
+                    .ValueGeneratedOnAdd()
+                    .HasColumnType("INTEGER");
+
+                b.Property<string>("Imie")
+                    .IsRequired()
+                    .HasColumnType("TEXT");
+
+                b.Property<string>("Nazwisko")
+                    .IsRequired()
+                    .HasColumnType("TEXT");
+
+                b.Property<string>("Pesel")
+                    .HasColumnType("INTEGER");
+
+                b.Property<string>("Data")
+                    .HasColumnType("INTEGER");
+
+                b.Property<int>("nrTel")
+                    .IsRequired()
+                    .HasColumnType("TEXT");
+
+                b.HasKey("ID");
+
+                b.ToTable("TestDrives");
+            }
+                );
+
+
+
+
+                modelBuilder.Entity("Projekt_MVC.Models.CarModel", b =>
                 {
                     b.Property<int>("ID")
                         .ValueGeneratedOnAdd()

@@ -1,5 +1,6 @@
 ﻿using Microsoft.EntityFrameworkCore;
 using Projekt_MVC.Models.Car;
+using Projekt_MVC.Models.Salon;
 using Projekt_MVC.Models.TDriveModel;
 
 namespace Projekt_MVC.Context
@@ -15,6 +16,7 @@ namespace Projekt_MVC.Context
 
         public DbSet<CarModel> Cars { get; set; }
         public DbSet<TestDriveModel> TestDrives { get; set; }
+        public DbSet<SalonModel> Salons { get; set; }
 
 
         protected override void OnModelCreating(ModelBuilder modelBuilder)

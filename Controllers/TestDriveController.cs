@@ -3,9 +3,6 @@ using System.Net;
 using Microsoft.AspNetCore.Mvc.Rendering;
 using Projekt_MVC.Services.TestDrive;
 using Projekt_MVC.Models.TDriveModel;
-using System.Drawing;
-using System.Xml.Linq;
-using Projekt_MVC.Models.Car;
 
 namespace Projekt_MVC.Controllers
 
@@ -14,10 +11,10 @@ namespace Projekt_MVC.Controllers
     {
         private readonly ILogger<TestDriveController> _logger;
         private readonly ITestDriveService _TestDriveService;
-        public TestDriveController(ILogger<TestDriveController> logger, ITestDriveService tesDriveService)
+        public TestDriveController(ILogger<TestDriveController> logger, ITestDriveService TestDriveService)
         {
             _logger = logger;
-            _TestDriveService = tesDriveService;
+            _TestDriveService = TestDriveService;
         }
         public IActionResult Index()
         {

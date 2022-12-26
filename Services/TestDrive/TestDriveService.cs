@@ -27,7 +27,7 @@ namespace Projekt_MVC.Services.TestDrive
                     Nazwisko = nazwisko,
                     Pesel = pesel,
                     Data = data,
-                    NrTel = nrtel,
+                    NrTel = nrtel
                 };
                 _TestDriveService.TestDrives.Add(newTD);
                 _TestDriveService.SaveChanges();

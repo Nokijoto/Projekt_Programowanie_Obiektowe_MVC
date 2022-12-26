@@ -4,7 +4,6 @@
 }
 <style>
     body {
-        
         background-color: black;
     }
 </style>
@@ -20,7 +19,7 @@
 
     </figure>
 
-       <figure class="figure">
+    <figure class="figure">
         <img src="https://i.gyazo.com/70b495f0650829dffb7157db64c5ef03.png" class="rounded float-left" alt="...">
 
         <button type="button" class="btn btn-primary btn-md float-r">Wypożycz</button>
@@ -28,7 +27,7 @@
 
     </figure>
 
-       <figure class="figure">
+    <figure class="figure">
         <img src="https://i.gyazo.com/70b495f0650829dffb7157db64c5ef03.png" class="rounded float-left" alt="...">
 
         <button type="button" class="btn btn-primary btn-md float-r">Wypożycz</button>
@@ -38,7 +37,7 @@
     <br />
     <figure class="figure">
         <img src="https://i.gyazo.com/70b495f0650829dffb7157db64c5ef03.png" class="rounded float-left" alt="...">
-  
+
         <button type="button" class="btn btn-primary btn-md text-right">Wypożycz</button>
 
         <h4><figcaption class="figure-caption text-center link-light">Auto1</figcaption></h4>
@@ -55,43 +54,45 @@
     </figure>
     <br />
 
-        <table class="table">
+    <table class="table">
         <thead>
             <tr>
                 <th scope="row">ID</th>
-                    <th scope="row">Name</th>
-                    <th scope="row">Color</th>
-                     <th scope="row">Description</th>
-                     <th scope="row">Engine</th>
-                     <th scope="row">HorsePower<th>
-                     <th scope="row">Model</th>
-                     <th scope="row">Price</th>
-                     <th scope="row">Year</th>
+                <th scope="row">Name</th>
+                <th scope="row">Color</th>
+                <th scope="row">Description</th>
+                <th scope="row">Engine</th>
+                <th scope="row">HorsePower
+                <th>
+                <th scope="row">Model</th>
+                <th scope="row">Price</th>
+                <th scope="row">Year</th>
             </tr>
         </thead>
         <tbody>
-            @foreach(var item in Model.Cars)
+            @foreach (var item in Model.Cars)
             {
                 <tr>
                     <th scope="row">@item.ID</th>
                     <th scope="row">@item.Name</th>
                     <th scope="row">@item.Color</th>
-                     <th scope="row">@item.Description</th>
-                     <th scope="row">@item.Engine</th>
-                     <th scope="row">@item.HorsePower<th>
-                     <th scope="row">@item.Model</th>
-                     <th scope="row">@item.Price</th>
-                     <th scope="row">@item.Year</th>
-                     <td>
-                         <a asp-controller="CarList" asp-action="DeleteCar" asp-route-id="@item.ID">Delete</a>
+                    <th scope="row">@item.Description</th>
+                    <th scope="row">@item.Engine</th>
+                    <th scope="row">@item.HorsePower
+                    <th>
+                    <th scope="row">@item.Model</th>
+                    <th scope="row">@item.Price</th>
+                    <th scope="row">@item.Year</th>
+                    <td>
+                        <a asp-controller="CarList" asp-action="DeleteCar" asp-route-id="@item.ID">Delete</a>
                         <a asp-controller="CarList" asp-action="EditCar" asp-route-id="@item.ID">Edit</a>
-                     </td>
+                    </td>
                 </tr>
             }
         </tbody>
     </table>
 
-    
+
 
     <div class="text-center">
         <a class="btn btn-primary btn-sm text-right" asp-area="" asp-controller="CarList" asp-action="NewCar" role="button">Dodaj samochód</a>
