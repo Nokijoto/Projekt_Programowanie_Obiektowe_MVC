@@ -18,57 +18,114 @@ namespace Projekt_MVC.Controllers
         }
         public IActionResult Index()
         {
-            var model = new SalonListViewModel()
+            try
             {
-                GetSalons = _SalonListService.GetSalons()
-            };
-            return View(model);
+                var model = new SalonListViewModel()
+                {
+                    GetSalons = _SalonListService.GetSalons()
+                };
+                return View(model);
+            }
+            catch (Exception ex)
+            {
+                _logger.LogError(ex, "Error while getting salons");
+                return StatusCode((int)HttpStatusCode.InternalServerError);
+            }
+
 
         }
 
         public IActionResult NewSalon()
         {
-            var model = new CreateSalonListViewModel();
-            return View(model);
-        }
+            try
+            {
+                var model = new CreateSalonListViewModel();
+                return View(model);
+
+            }
+            catch (Exception ex)
+            {
+                _logger.LogError(ex, "Error while creating new salons");
+                return StatusCode((int)HttpStatusCode.InternalServerError);
+            }
+    }
 
         public IActionResult CreateNewSalon(string name, string address, string phone, string email, string openhours, string opendays)
         {
-            _SalonListService.CreateSalon(name, address, phone, email, openhours, opendays);
-            return RedirectToAction("Index");
+            try
+            {
+                _SalonListService.CreateSalon(name, address, phone, email, openhours, opendays);
+                return RedirectToAction("Index");
+            }
+            catch (Exception ex)
+            {
+                _logger.LogError(ex, "Error while creating new salons");
+                return StatusCode((int)HttpStatusCode.InternalServerError);
+            }
+            
         }
         public IActionResult DeleteSalonList(int id)
         {
-            if (id == null)
+            try
             {
-                return NotFound();
+                if (id == null)
+                {
+                    return NotFound();
+                }
+                _SalonListService.DeleteSalon(id);
+                return RedirectToAction("Index");
             }
-            _SalonListService.DeleteSalon(id);
-            return RedirectToAction("Index");
+            catch (Exception ex)
+            {
+                _logger.LogError(ex, "Error while deleting salons");
+                return StatusCode((int)HttpStatusCode.InternalServerError);
+            }
+      
         }
 
         public IActionResult EditSalonList(int id)
         {
-            var SL = _SalonListService.GetSalons(id);
-            var model = new EditSalonModel()
+            try
             {
-               
-                ID = SL.ID,
-                Name = SL.Name,
-                Address = SL.Address,
-                Phone = SL.Phone,
-                Email = SL.Email,
-                OpenHours = SL.OpenHours,
-                OpenDays = SL.OpenDays,
-            };
+                if (id == null)
+                {
+                    return NotFound();
+                }
+                var SL = _SalonListService.GetSalons(id);
+                var model = new EditSalonModel()
+                {
 
-
-            return View(model);
+                    ID = SL.ID,
+                    Name = SL.Name,
+                    Address = SL.Address,
+                    Phone = SL.Phone,
+                    Email = SL.Email,
+                    OpenHours = SL.OpenHours,
+                    OpenDays = SL.OpenDays,
+                };
+                 
+                return View(model);
+            }
+            catch (Exception ex)
+            {
+                _logger.LogError(ex, "Error while editing salons");
+                return StatusCode((int)HttpStatusCode.InternalServerError);
+            }
+            
         }
         public IActionResult EditSalonDetails(long id, string name, string address, string phone, string email, string openhours, string opendays)
         {
-            _SalonListService.EditSalonList(id, name, address, phone, email, openhours, opendays);
-            return RedirectToAction("Index");
+            try
+            {
+                _SalonListService.EditSalonList(id, name, address, phone, email, openhours, opendays);
+                return RedirectToAction("Index");
+            }
+            catch (Exception ex)
+            {
+                _logger.LogError(ex, "Error while editing salons");
+                return StatusCode((int)HttpStatusCode.InternalServerError);
+            }
+         
         }
 
 
