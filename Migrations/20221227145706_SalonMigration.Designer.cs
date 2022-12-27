@@ -10,8 +10,8 @@ using Projekt_MVC.Context;
 namespace ProjektMVC.Migrations
 {
     [DbContext(typeof(MainContext))]
-    [Migration("20221227101526_InitialCreate")]
-    partial class InitialCreate
+    [Migration("20221227145706_SalonMigration")]
+    partial class SalonMigration
     {
         /// <inheritdoc />
         protected override void BuildTargetModel(ModelBuilder modelBuilder)

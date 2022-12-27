@@ -14,12 +14,13 @@
     <a class="btn btn-primary btn-lg d-flex justify-content-center w-100" asp-area="" asp-controller="CarList" asp-action="NewCar" role="button">Dodaj samochód</a>
     <p></p>
     <div>
-<<<<<<< HEAD
         
         @foreach(var item in Model.Cars)
          {
-             <a class="btn btn-primary btn-sm float-start" asp-controller="CarList" asp-action="DeleteCar" asp-route-id="@item.ID">Delete</a>
-                    <a class="btn btn-primary btn-sm float-end" asp-controller="CarList" asp-action="EditCar" asp-route-id="@item.ID">Edit</a>
+             
+           
+             <a class="btn btn-primary btn-sm float-start" asp-controller="CarList" asp-action="DeleteCar" asp-route-id="@item.ID" role="button">Delete</a>
+            <a class="btn btn-primary btn-sm float-end" asp-controller="CarList" asp-action="EditCar" asp-route-id="@item.ID" role="button">Edit</a>
             <figure class="figure mx-auto d-block">
                 <img src="https://i.gyazo.com/70b495f0650829dffb7157db64c5ef03.png" class="rounded mx-auto d-block" alt="...">
 
