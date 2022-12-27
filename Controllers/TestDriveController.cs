@@ -18,55 +18,114 @@ namespace Projekt_MVC.Controllers
         }
         public IActionResult Index()
         {
-            var model = new TestDriveViewModel()
+            try
             {
-                TestDrives = _TestDriveService.GetTestDrives()
-            };
-            return View(model);
+                var model = new TestDriveViewModel()
+                {
+                    TestDrives = _TestDriveService.GetTestDrives()
+                };
+                return View(model);
+            }
+            catch (Exception ex)
+            {
+                _logger.LogError(ex, "Error while getting test drives");
+                return StatusCode((int)HttpStatusCode.InternalServerError);
+            }
+          
 
         }
 
         public IActionResult NewTestDrive()
         {
-            var model = new CreateTestDriveViewModel();
-            return View(model);
+            try
+            {
+                var model = new CreateTestDriveViewModel();
+                return View(model);
+
+            }
+            catch (Exception ex)
+            {
+                _logger.LogError(ex, "Error while creating new test drives");
+                return StatusCode((int)HttpStatusCode.InternalServerError);
+            }
+            
         }
 
         public IActionResult CreateNewTestDrive(string imie, string nazwisko, string pesel, string data, int nrtel)
         {
-            _TestDriveService.CreateTestDrive(imie, nazwisko, pesel, data, nrtel);
-            return RedirectToAction("Index");
+            try
+            {
+                
+               _TestDriveService.CreateTestDrive(imie, nazwisko, pesel, data, nrtel);
+               return RedirectToAction("Index");
+            }
+            catch (Exception ex)
+            {
+                _logger.LogError(ex, "Error while creating new test drives");
+                return StatusCode((int)HttpStatusCode.InternalServerError);
+            }
+           
         }
         public IActionResult DeleteTestDrive(int id)
         {
-            if (id == null)
+            try 
             {
-                return NotFound();
+                
+                if (id == null)
+                {
+                    return NotFound();
+                }
+                _TestDriveService.DeleteTestDrive(id);
+                return RedirectToAction("Index");
             }
-            _TestDriveService.DeleteTestDrive(id);
-            return RedirectToAction("Index");
+            catch (Exception ex)
+            {
+                _logger.LogError(ex, "Error while deleting test drives");
+                return StatusCode((int)HttpStatusCode.InternalServerError);
+            }
+            
         }
 
         public IActionResult EditTestDrive(int id)
         {
-            var TD = _TestDriveService.GetTestDrives(id);
-            var model = new EditTestDriveModel()
+            try
             {
-                ID = TD.ID,
-                Imie = TD.Imie,
-                Nazwisko = TD.Nazwisko,
-                Pesel = TD.Pesel,
-                Data = TD.Data,
-                NrTel = TD.NrTel,
-            };
-            
 
-            return View(model);
+                var TD = _TestDriveService.GetTestDrives(id);
+                var model = new EditTestDriveModel()
+                {
+                    ID = TD.ID,
+                    Imie = TD.Imie,
+                    Nazwisko = TD.Nazwisko,
+                    Pesel = TD.Pesel,
+                    Data = TD.Data,
+                    NrTel = TD.NrTel,
+                };
+
+
+                return View(model);
+            }
+            catch (Exception ex)
+            {
+                _logger.LogError(ex, "Error while editing test drives");
+                return StatusCode((int)HttpStatusCode.InternalServerError);
+            }
+            
         }
         public IActionResult EditTestDriveDetails(long id, string imie, string nazwisko, string pesel, string data, int nrtel)
         {
-            _TestDriveService.EditTestDrive(id, imie, nazwisko, pesel, data, nrtel); 
-            return RedirectToAction("Index");
+            try
+            {
+                _TestDriveService.EditTestDrive(id, imie, nazwisko, pesel, data, nrtel);
+                return RedirectToAction("Index");
+
+            }
+            catch (Exception ex)
+            {
+                _logger.LogError(ex, "Error while editing test drives");
+                return StatusCode((int)HttpStatusCode.InternalServerError);
+            }
+            
         }
     }
 }
