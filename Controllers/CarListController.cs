@@ -66,24 +66,6 @@ namespace Projekt_MVC.Controllers
             return RedirectToAction("Index");
         }
 
-        public IActionResult EditCar(int id, string name, string model, string color, string year, string price, string description, EngineEnum engine, int horsePower)
-        {
-            if (id == null)
-            {
-                return NotFound();
-            }
-            _CarService.EditCar(id, name, model, color, year, price, description, engine, horsePower);
-            return RedirectToAction("EditCar");
-        }
-        //if (id == null)
-        //{
-        //    return new HttpStatusCodeResult(HttpStatusCode.BadRequest);
-        //}
-        //Movie movie = db.Movies.Find(id);
-        //if (movie == null)
-        //{
-        //    return HttpNotFound();
-        //}
 
        
         public IActionResult EditCar(int id)

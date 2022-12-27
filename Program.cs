@@ -11,9 +11,13 @@ var builder = WebApplication.CreateBuilder(args);
 builder.Services.AddControllersWithViews();
 builder.Services.AddDbContext<MainContext>(options =>
     options.UseSqlite(builder.Configuration.GetConnectionString("CarContext")));
+
+
 builder.Services.AddScoped<ICarService, CarService>();
 builder.Services.AddScoped<ITestDriveService, TestDriveService>();
 builder.Services.AddScoped<ISalonListService, SalonListService>();
+
+
 var app = builder.Build();
 
 using (var scope = app.Services.CreateScope())
