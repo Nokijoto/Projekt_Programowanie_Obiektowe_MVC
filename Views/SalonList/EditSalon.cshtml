@@ -1,0 +1,36 @@
+﻿@model Projekt_MVC.Models.Salon.EditSalonModel
+@{
+}
+<form method="post" asp-controller="SalonList" asp-action="EditSalonDetails">
+
+    <div class="form-group">
+        <label for="id">ID</label>
+        <input type="text" class="form-control" id="id" name="id" placeholder="ID" readonly value="@Model.ID">
+    </div>
+    <div class="form-group">
+        <label for="name">Name</label>
+        <input type="text" class="form-control" id="name" name="name" placeholder="Nazwa salonu" value="@Model.Name">
+    </div>
+    <div class="form-group">
+        <label for="adres">Address</label>
+        <input type="text" class="form-control" id="adres" name="adres" placeholder="Adres salonu" value="@Model.Address">
+    </div>
+    <div class="form-group">
+        <label for="phone">Phone</label>
+        <input type="text" class="form-control" id="phone" name="phone" placeholder="Telefon salonu" value="@Model.Phone">
+    </div>
+    <div class="form-group">
+        <label for="email">Email</label>
+        <input type="text" class="form-control" id="email" name="email" placeholder="Email salonu" value="@Model.Email">
+    </div>
+    <div class="form-group">
+        <label for="openhours">OpenHours</label>
+        <input type="text" class="form-control" id="openhours" name="openhours" placeholder="Godziny otwarcia salonu" value="@Model.OpenHours">
+    </div>
+    <div class="form-group">
+        <label for="opendays">OpenDays</label>
+        <input type="text" class="form-control" id="opendays" name="opendays" placeholder="Dni otwarcia salonu" value="@Model.OpenDays">
+    </div>
+ 
+      <button type="submit" class="btn btn-primary">Submit</button>
+</form>
