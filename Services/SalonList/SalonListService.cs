@@ -43,7 +43,7 @@ namespace Projekt_MVC.Services.SalonList
             SL = sls;
             if (SL != null)
             {
-                _SalonListService.Salons.Remove(SL) ;
+                _SalonListService.Salons.Remove(SL);
                 _SalonListService.SaveChanges();
             }
         }
@@ -55,16 +55,16 @@ namespace Projekt_MVC.Services.SalonList
 
         public void EditSalonList(long id, string name, string address, string phone, string email, string openhours, string opendays)
         {
-            var SL = _SalonListService.Salons.FirstOrDefault(x => x.ID == id);
-            if (SL != null)
+            var S = _SalonListService.Salons.FirstOrDefault(x => x.ID == id);
+            if (S != null)
             {
-                SL.Name = name;
-                SL.Address = address;
-                SL.Phone = phone;
-                SL.Email = email;
-                SL.OpenHours = openhours;
-                SL.OpenDays = opendays;
-                _SalonListService.Update(SL);
+                S.Name = name;
+                S.Address = address;
+                S.Phone = phone;
+                S.Email = email;
+                S.OpenHours = openhours;
+                S.OpenDays = opendays;
+                _SalonListService.Update(S);
                 _SalonListService.SaveChanges();
             }
         }

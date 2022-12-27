@@ -52,6 +52,7 @@ namespace Projekt_MVC.Controllers
             var SL = _SalonListService.GetSalons(id);
             var model = new EditSalonModel()
             {
+               
                 ID = SL.ID,
                 Name = SL.Name,
                 Address = SL.Address,

@@ -28,7 +28,8 @@
                 <h5><figcaption class="figure-caption text-center link-light">Marka: @item.Name  <p></p>    Model: @item.Model <p></p></figcaption></h5>
                 <h5><figcaption class="figure-caption text-center link-light">Moc silnika (KM): @item.HorsePower <p></p> Silnik: @item.Engine <p></p> </figcaption></h5>
                 <h5><figcaption class="figure-caption text-center link-light">Opis: @item.Description <p></p></figcaption></h5>
-                <button type="button" class="btn btn-primary btn-md mx-auto d-block">Wypożycz</button>
+               
+                <a class="btn btn-primary btn-md mx-auto d-block" asp-controller="TestDrive" asp-action="NewTestDrive" asp-route-id="@item.ID" role="button">Wypożycz</a>
 
         </figure>
         <br />
