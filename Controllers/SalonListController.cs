@@ -64,7 +64,7 @@ namespace Projekt_MVC.Controllers
 
             return View(model);
         }
-        public IActionResult EditTestDriveDetails(long id, string name, string address, string phone, string email, string openhours, string opendays)
+        public IActionResult EditSalonDetails(long id, string name, string address, string phone, string email, string openhours, string opendays)
         {
             _SalonListService.EditSalonList(id, name, address, phone, email, openhours, opendays);
             return RedirectToAction("Index");

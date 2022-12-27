@@ -17,11 +17,7 @@
     public int HorsePower { get; set; }
     *@
     <div class="form-group">
-        <label for="id">ID</label>
-        <input type="number" class="form-control" id="id" name="id" placeholder="Enter ID">
-    </div>
-    <div class="form-group">
-        <label for="make">Name</label>
+        <label for="name">Name</label>
         <input type="text" class="form-control" id="name" name="name" placeholder="Enter Name">
     </div>
     <div class="form-group">
@@ -46,7 +42,7 @@
     </div>
     <div class="form-group">
         <label for="mileage">Engine</label>
-        <input type="number" class="form-control" id="engine" name="engine" placeholder="Enter Engine">
+        <select id="Engine" name="Engine" class="form-control" required asp-items="@Model.Engine"></select>
     </div>
     <div class="form-group">
         <label for="mileage">HorsePower</label>

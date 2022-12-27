@@ -40,7 +40,7 @@ namespace Projekt_MVC.Models
                     new TestDriveModel()
                     {
                         ID = 1,
-                        Imie = "Robret",
+                        Imie = "Robert",
                         Nazwisko = "Makłowicz",
                         Pesel = "00000000000",
                         Data = "12-12-2022",
@@ -48,17 +48,20 @@ namespace Projekt_MVC.Models
                     }
 
                 );
+                if (context.Salons.Any())
+                {
+                    return;
+                }
                 context.Salons.AddRange(
                    new SalonModel()
                    {
                        
-                       ID=0,
+                       ID=1,
                        Name = "Salon 1",
                        Address = "Adres 1",
                        Phone = "123456789",
-                       OpenDays = "Poniedziałek - Piątek",
                        OpenHours = "8:00 - 16:00",
-                    
+                       OpenDays = "Poniedziałek - Piątek",
                        Email = "testemail"
                        
                    }
