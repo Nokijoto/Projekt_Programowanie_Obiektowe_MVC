@@ -1,6 +1,7 @@
 ﻿using Microsoft.EntityFrameworkCore;
 using Projekt_MVC.Context;
 using Projekt_MVC.Models.Car;
+using Projekt_MVC.Models.Salon;
 using Projekt_MVC.Models.TDriveModel;
 
 namespace Projekt_MVC.Models
@@ -47,6 +48,22 @@ namespace Projekt_MVC.Models
                     }
 
                 );
+                context.Salons.AddRange(
+                   new SalonModel()
+                   {
+                       
+                       ID=0,
+                       Name = "Salon 1",
+                       Address = "Adres 1",
+                       Phone = "123456789",
+                       OpenDays = "Poniedziałek - Piątek",
+                       OpenHours = "8:00 - 16:00",
+                    
+                       Email = "testemail"
+                       
+                   }
+
+               );
                 context.SaveChanges();
             }
         }

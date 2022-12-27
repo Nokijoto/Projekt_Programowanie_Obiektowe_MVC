@@ -8,3 +8,36 @@
     }
 </style>
 
+<table class="table">
+    <thead>
+        <tr>
+            <th scope="row">ID</th>
+            <th scope="row">Name</th>
+            <th scope="row">Address</th>
+            <th scope="row">Phone</th>
+            <th scope="row">Email</th>
+            <th scope="row">OpenHours</th>
+            <th scope="row">OpenDays</th>
+            
+        </tr>
+    </thead>
+    <tbody>
+        @foreach (var item in Model.GetSalons)
+        {
+            <tr>
+                <th scope="row">@item.ID</th>
+                <th scope="row">@item.Name</th>
+                <th scope="row">@item.Address</th>
+                <th scope="row">@item.Phone</th>
+                <th scope="row">@item.Email</th>
+                <th scope="row">@item.OpenHours</th>
+                <th scope="row">@item.OpenDays</th>
+                <td>
+                    <a class="btn btn-primary btn-sm text-right" asp-area="" asp-controller="SalonList" asp-action="NewSalon" role="button">Dodaj Salon</a>
+                    <a asp-controller="SalonList" asp-action="DeleteSalon" asp-route-id="@item.ID">Delete</a>
+                    <a asp-controller="SalonList" asp-action="EditSalon" asp-route-id="@item.ID">Edit</a>
+                </td>
+            </tr>
+        }
+    </tbody>
+</table>

@@ -25,6 +25,7 @@
                 <th scope="row">@item.Data</th>
                 <th scope="row">@item.NrTel<th>
                 <td>
+                    <a class="btn btn-primary btn-sm text-right" asp-area="" asp-controller="TestDrive" asp-action="NewTestDrive" role="button">Dodaj Jazde</a>
                     <a asp-controller="TestDrive" asp-action="DeleteTestDrive" asp-route-id="@item.ID">Delete</a>
                     <a asp-controller="TestDrive" asp-action="EditTestDrive" asp-route-id="@item.ID">Edit</a>
                 </td>
