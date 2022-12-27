@@ -8,7 +8,7 @@
         
     }
 </style>
-
+<a asp-controller="SalonList" asp-action="NewSalon" role="button">Dodaj Salon</a>
 <table class="table text-light">
     <thead>
         <tr>
@@ -34,9 +34,10 @@
                 <th scope="row">@item.OpenHours</th>
                 <th scope="row">@item.OpenDays</th>
                 <td>
-                    <a asp-controller="SalonList" asp-action="NewSalon" role="button">Dodaj Salon</a>
-                    <a asp-controller="SalonList" asp-action="DeleteSalon" asp-route-id="@item.ID">Delete</a>
-                    <a asp-controller="SalonList" asp-action="EditSalon" asp-route-id="@item.ID">Edit</a>
+                    
+                   <a class="btn btn-primary btn-sm float-start" asp-controller="SalonList" asp-action="DeleteSalonList" asp-route-id="@item.ID" role="button">Delete</a>
+                   <a class="btn btn-primary btn-sm float-end" asp-controller="SalonList" asp-action="EditSalonList" asp-route-id="@item.ID" role="button">Edit</a>
+            <figure class="figure mx-auto d-block">
                 </td>
             </tr>
         }
