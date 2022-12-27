@@ -2,14 +2,14 @@
 @{
     ViewData["Title"] = "SalonList";
 }
-<style>
+@*<style>
     body {
         background-color: black;
         
     }
 </style>
-
-<table class="table text-light">
+*@
+<table class="table">
     <thead>
         <tr>
             <th scope="row">ID</th>
@@ -36,7 +36,7 @@
                 <td>
                     <a asp-controller="SalonList" asp-action="NewSalon" role="button">Dodaj Salon</a>
                     <a asp-controller="SalonList" asp-action="DeleteSalon" asp-route-id="@item.ID">Delete</a>
-                    <a asp-controller="SalonList" asp-action="EditSalon" asp-route-id="@item.ID">Edit</a>
+                    <a asp-controller="SalonList" asp-action="EditSalonList" asp-route-id="@item.ID">Edit</a>
                 </td>
             </tr>
         }

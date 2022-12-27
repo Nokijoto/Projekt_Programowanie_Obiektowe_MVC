@@ -1,9 +1,6 @@
 ﻿using Microsoft.AspNetCore.Mvc;
-using System.Net;
-using Microsoft.AspNetCore.Mvc.Rendering;
 using Projekt_MVC.Services.SalonList;
 using Projekt_MVC.Models.Salon;
-using System.Xml.Linq;
 
 namespace Projekt_MVC.Controllers
 {
@@ -37,7 +34,7 @@ namespace Projekt_MVC.Controllers
             _SalonListService.CreateSalon(name, address, phone, email, openhours, opendays);
             return RedirectToAction("Index");
         }
-        public IActionResult DeleteSalonList(int id)
+        public IActionResult DeleteSalon(int id)
         {
             if (id == null)
             {
@@ -49,16 +46,16 @@ namespace Projekt_MVC.Controllers
 
         public IActionResult EditSalonList(int id)
         {
-            var SL = _SalonListService.GetSalons(id);
+            var S = _SalonListService.GetSalons(id);
             var model = new EditSalonModel()
             {
-                ID = SL.ID,
-                Name = SL.Name,
-                Address = SL.Address,
-                Phone = SL.Phone,
-                Email = SL.Email,
-                OpenHours = SL.OpenHours,
-                OpenDays = SL.OpenDays,
+                ID = S.ID,
+                Name = S.Name,
+                Address = S.Address,
+                Phone = S.Phone,
+                Email = S.Email,
+                OpenHours = S.OpenHours,
+                OpenDays = S.OpenDays,
             };
 
 
