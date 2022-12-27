@@ -8,6 +8,6 @@ namespace Projekt_MVC.Services.SalonList
         void CreateSalon(string name, string address, string phone, string email, string openhours, string opendays);
         void DeleteSalon(int id);
         public SalonModel GetSalons(int id);
-        public void EditSalonList(long id,string name, string address, string phone, string email, string openhours, string opendays);
+        public void EditSalonList(long id, string name, string address, string phone, string email, string openhours, string opendays);
     }
 }
