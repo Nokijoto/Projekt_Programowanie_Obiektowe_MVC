@@ -1,57 +1,60 @@
-﻿@{
-    ViewData["Title"] = "Create TestDrive";
+﻿@model Projekt_MVC.Models.TDriveModel.CreateTestDriveViewModel
+@{
+    ViewData["Title"] = "NewTestDrive";
+   
 }
-<form method="post" asp-controller="TestDrive" asp-action="CreateNewTestDrive">
 
+<h4>CreateTestDriveViewModel</h4>
+<hr />
+<div class="row">
+    <div class="col-md-4">
+        <form asp-controller="TestDrive" asp-action="CreateNewTestDrive">
+            <div asp-validation-summary="ModelOnly" class="text-danger"></div>
+            
+            <div class="form-group">
+                <label asp-for="Imie" class="control-label"></label>
+                <input asp-for="Imie" class="form-control" />
+                <span asp-validation-for="Imie" class="text-danger"></span>
+            </div>
+            <div class="form-group">
+                <label asp-for="Nazwisko" class="control-label"></label>
+                <input asp-for="Nazwisko" class="form-control" />
+                <span asp-validation-for="Nazwisko" class="text-danger"></span>
+            </div>
+            <div class="form-group">
+                <label asp-for="Pesel" class="control-label"></label>
+                <input asp-for="Pesel" class="form-control" />
+                <span asp-validation-for="Pesel" class="text-danger"></span>
+            </div>
+            <div class="form-group">
+                <label asp-for="Data" class="control-label"></label>
+                <input asp-for="Data" class="form-control" />
+                <span asp-validation-for="Data" class="text-danger"></span>
+            </div>
+            <div class="form-group">
+                <label asp-for="NrTel" class="control-label"></label>
+                <input asp-for="NrTel" class="form-control" />
+                <span asp-validation-for="NrTel" class="text-danger"></span>
+            </div>
+            @*<div class="form-group">
+                <label asp-for="car" class="control-label"></label>
+                <input asp-for="car.ID" readonly class="form-control" />
+               @* <input asp-for="car.Name" readonly class="form-control" />
+                <input asp-for="car.Description" readonly class="form-control" />
+                <input asp-for="car.Year" readonly class="form-control" />
+                <span asp-validation-for="car" class="text-danger"></span>
+            </div>*@
+            <div class="form-group">
+                <input type="submit" value="Create" class="btn btn-primary" />
+            </div>
+        </form>
+    </div>
+</div>
 
-    @*
-    public int ID { get; set; }
-    public string Imie { get; set; }
-    public string Nazwisko { get; set; }
-    public string Pesel { get; set; }
-    public string Data { get; set; }
-    public int NrTel { get; set; }
-    *@
-    <div class="form-group">
-        <label for="imie">Imie</label>
-        <input type="text" class="form-control" id="imie" name="imie" placeholder="Podaj Imie">
-    </div>
-    <div class="form-group">
-        <label for="nazwisko">Nazwisko</label>
-        <input type="text" class="form-control" id="nazwisko" name="nazwisko" placeholder="Podaj Nazwisko">
-    </div>
-    <div class="form-group">
-        <label for="pesel">Pesel</label>
-        <input type="text" class="form-control" id="pesel" name="pesel" placeholder="Podaj pesel">
-    </div>
-    <div class="form-group">
-        <label for="data">Data</label>
-        <input type="text" class="form-control" id="data" name="data" placeholder="Podaj date">
+<div>
+    <a asp-action="Index">Back to List</a>
+</div>
 
-    </div>
-
-    <div class="form-group">
-        <label for="nrtel">NrTel</label>
-        <input type="number" class="form-control" id="nrtel" name="nrtel" placeholder="Podaj numer telefonu">
-    </div>
-
-
-    @* <div class="form-group">
-    <label for="id">ID</label>
-    <input type="number" class="form-control" id="id" name="id" placeholder="Enter ID">
-    </div>
-    <div class="form-group">
-    <label for="name">Name</label>
-    <input type="text" class="form-control" id="name" name="name" placeholder="Enter Name">
-    </div>
-    <div class="form-group">
-    <label for="name">City</label>
-    <input type="text" class="form-control" id="city" name="city" placeholder="City">
-    </div>
-    <div class="form-group">
-    <label for="name">Gender</label>
-    <input type="number" class="form-control" id="gender" name="gender" placeholder="Gender">
-    </div>*@
-    <br />
-    <button type="submit" class="btn btn-primary">Submit</button>
-</form>
+@section Scripts {
+    @{await Html.RenderPartialAsync("_ValidationScriptsPartial");}
+}

@@ -3,6 +3,9 @@ using System.Net;
 using Microsoft.AspNetCore.Mvc.Rendering;
 using Projekt_MVC.Services.TestDrive;
 using Projekt_MVC.Models.TDriveModel;
+using Projekt_MVC.Models.Car;
+using System.Threading.Tasks.Dataflow;
+using Microsoft.EntityFrameworkCore.Storage.Internal;
 
 namespace Projekt_MVC.Controllers
 
@@ -39,6 +42,7 @@ namespace Projekt_MVC.Controllers
         {
             try
             {
+               
                 var model = new CreateTestDriveViewModel();
                 return View(model);
 
@@ -55,8 +59,14 @@ namespace Projekt_MVC.Controllers
         {
             try
             {
-                
-               _TestDriveService.CreateTestDrive(imie, nazwisko, pesel, data, nrtel);
+                var dataNowa = DateTime.Parse(data);
+                var now = DateTime.Now;
+                //if (dataNowa < now)
+                //{
+                //    throw new Exception("Data nie może być wcześniejsza niż dzisiejsza");
+                //}
+
+                _TestDriveService.CreateTestDrive(imie, nazwisko, pesel, data, nrtel);
                return RedirectToAction("Index");
             }
             catch (Exception ex)
@@ -90,8 +100,10 @@ namespace Projekt_MVC.Controllers
         {
             try
             {
+               
 
                 var TD = _TestDriveService.GetTestDrives(id);
+               
                 var model = new EditTestDriveModel()
                 {
                     ID = TD.ID,

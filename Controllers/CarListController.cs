@@ -17,6 +17,7 @@ namespace Projekt_MVC.Controllers
             _logger = logger;
             _CarService = CarService;
         }
+        [HttpGet]
         public IActionResult Index()
         {
             try
@@ -36,6 +37,7 @@ namespace Projekt_MVC.Controllers
            
            
         }
+        [HttpPost]
         public IActionResult NewCar()
         {
             try
@@ -71,6 +73,7 @@ namespace Projekt_MVC.Controllers
             }
            
         }
+        [HttpPost]
         public IActionResult CreateNewCar( string name, string model, string color, string year, string price, string description, EngineEnum engine, int horsePower)
         {
             try
@@ -153,6 +156,7 @@ namespace Projekt_MVC.Controllers
             //_CarService.CreateCar (name, model, color,year,price,description, engine, horsePower);
             //return RedirectToAction("Index");
         }
+        [HttpDelete]
         public IActionResult DeleteCar(int id)
         {
             try
@@ -173,7 +177,7 @@ namespace Projekt_MVC.Controllers
         }
 
 
-       
+        [HttpPost]
         public IActionResult EditCar(int id)
         {
             try
@@ -191,6 +195,16 @@ namespace Projekt_MVC.Controllers
                     Engine = new List<SelectListItem>(),
                     HorsePower = car.HorsePower
                 };
+
+                foreach (var item in Enum.GetValues(typeof(EngineEnum)))
+                {
+
+                    model.Engine.Add(new SelectListItem()
+                    {
+                        Text = item.ToString(),
+                        Value = item.ToString()
+                    });
+                }
                 //foreach (var item in Enum.GetValues(typeof(EngineEnum)))
                 //{
                 //    model.Engine.Add(new SelectListItem()
@@ -208,6 +222,7 @@ namespace Projekt_MVC.Controllers
                 return StatusCode((int)HttpStatusCode.InternalServerError, e.Message);
             }
         }
+        [HttpPost]
         public IActionResult EditCarDetails(long id, string name, string model, string color, string year, string price, string description, EngineEnum engine, int horsePower)
         {
 

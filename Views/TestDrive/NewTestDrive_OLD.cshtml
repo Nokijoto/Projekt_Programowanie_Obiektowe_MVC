@@ -1,0 +1,57 @@
+﻿@{
+    ViewData["Title"] = "Create TestDrive";
+}
+<form method="post" asp-controller="TestDrive" asp-action="CreateNewTestDrive">
+
+
+    @*
+    public int ID { get; set; }
+    public string Imie { get; set; }
+    public string Nazwisko { get; set; }
+    public string Pesel { get; set; }
+    public string Data { get; set; }
+    public int NrTel { get; set; }
+    *@
+    <div class="form-group">
+        <label for="imie">Imie</label>
+        <input type="text" class="form-control" id="imie" name="imie" placeholder="Podaj Imie">
+    </div>
+    <div class="form-group">
+        <label for="nazwisko">Nazwisko</label>
+        <input type="text" class="form-control" id="nazwisko" name="nazwisko" placeholder="Podaj Nazwisko">
+    </div>
+    <div class="form-group">
+        <label for="pesel">Pesel</label>
+        <input type="text" class="form-control" id="pesel" name="pesel" placeholder="Podaj pesel">
+    </div>
+    <div class="form-group">
+        <label for="data">Data</label>
+        <input type="date" class="form-control" id="data" name="data" placeholder="Podaj date">
+
+    </div>
+
+    <div class="form-group">
+        <label for="nrtel">NrTel</label>
+        <input type="number" class="form-control" id="nrtel" name="nrtel" placeholder="Podaj numer telefonu">
+    </div>
+
+
+    @* <div class="form-group">
+    <label for="id">ID</label>
+    <input type="number" class="form-control" id="id" name="id" placeholder="Enter ID">
+    </div>
+    <div class="form-group">
+    <label for="name">Name</label>
+    <input type="text" class="form-control" id="name" name="name" placeholder="Enter Name">
+    </div>
+    <div class="form-group">
+    <label for="name">City</label>
+    <input type="text" class="form-control" id="city" name="city" placeholder="City">
+    </div>
+    <div class="form-group">
+    <label for="name">Gender</label>
+    <input type="number" class="form-control" id="gender" name="gender" placeholder="Gender">
+    </div>*@
+    <br />
+    <button type="submit" class="btn btn-primary">Submit</button>
+</form>
