@@ -17,7 +17,7 @@ namespace Projekt_MVC.Controllers
             _logger = logger;
             _CarService = CarService;
         }
-        [HttpGet]
+        
         public IActionResult Index()
         {
             try
@@ -37,7 +37,6 @@ namespace Projekt_MVC.Controllers
            
            
         }
-        [HttpPost]
         public IActionResult NewCar()
         {
             try
@@ -73,7 +72,7 @@ namespace Projekt_MVC.Controllers
             }
            
         }
-        [HttpPost]
+        
         public IActionResult CreateNewCar( string name, string model, string color, string year, string price, string description, EngineEnum engine, int horsePower)
         {
             try
@@ -96,7 +95,7 @@ namespace Projekt_MVC.Controllers
             }
             catch (Exception e)
             {
-                return StatusCode((int)HttpStatusCode.InternalServerError, e.Message);
+                return StatusCode((int)HttpStatusCode.NotAcceptable, e.Message);
             }
             //try
             //{
@@ -156,7 +155,7 @@ namespace Projekt_MVC.Controllers
             //_CarService.CreateCar (name, model, color,year,price,description, engine, horsePower);
             //return RedirectToAction("Index");
         }
-        [HttpDelete]
+        
         public IActionResult DeleteCar(int id)
         {
             try
@@ -176,8 +175,7 @@ namespace Projekt_MVC.Controllers
             //return RedirectToAction("Index");
         }
 
-
-        [HttpPost]
+        
         public IActionResult EditCar(int id)
         {
             try
@@ -222,7 +220,7 @@ namespace Projekt_MVC.Controllers
                 return StatusCode((int)HttpStatusCode.InternalServerError, e.Message);
             }
         }
-        [HttpPost]
+    
         public IActionResult EditCarDetails(long id, string name, string model, string color, string year, string price, string description, EngineEnum engine, int horsePower)
         {
 
@@ -231,6 +229,72 @@ namespace Projekt_MVC.Controllers
         }
 
 
+        [HttpGet]
+        public async Task<ActionResult> GetCarsListJson()
+        {
+            var model =  new CarViewModel()
+            {
+                Cars = _CarService.GetCars()
+            };
+            return Json(model);
+            //return Json(new { Data = model }, JsonRequestBehavior.AllowGet);
+        }
 
+        [HttpDelete]
+        public async Task<ActionResult> DeleteCarJson(int id)
+        {
+            try
+            {
+                if (id == null)
+                {
+                    return Json(new { Error= "ID is null" });
+                }
+                _CarService.DeleteCar(id);
+                return Json(new { Success = true });
+            }
+            catch (Exception e)
+            {
+                return StatusCode((int)HttpStatusCode.InternalServerError, e.Message);
+            }
+        }
+        [HttpPost]
+        public async Task<ActionResult> CreateCarJson(string name, string model, string color, string year, string price, string description, EngineEnum engine, int horsePower)
+        {
+            try
+            {
+                if (ModelState.IsValid)
+                {
+                    if (Int32.Parse(price) <= 0)
+                    {
+                        throw new Exception("Cena nie mniejsza niż 0");
+                    }
+                    _CarService.CreateCar(name, model, color, year, price, description, engine, horsePower);
+                    return Json(new { Success = true });
+
+                }
+                else
+                {
+                    return Json(new { Success = false });
+
+                }
+            }
+            catch (Exception e)
+            {
+                return StatusCode((int)HttpStatusCode.NotAcceptable, e.Message);
+            }
+        }
+        [HttpPut]
+        public async Task<ActionResult> EditCarJson(long id, string name, string model, string color, string year, string price, string description, EngineEnum engine, int horsePower)
+        {
+            try
+            {
+                _CarService.EditCar(id, name, model, color, year, price, description, engine, horsePower);
+                return Json(new { Success = true });
+            }
+            catch (Exception e)
+            {
+                return StatusCode((int)HttpStatusCode.InternalServerError, e.Message);
+            }
+        }
     }
 }

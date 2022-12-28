@@ -55,8 +55,16 @@ namespace Projekt_MVC.Controllers
         {
             try
             {
-                _SalonListService.CreateSalon(name, address, phone, email, openhours, opendays);
-                return RedirectToAction("Index");
+                if (ModelState.IsValid)
+                {
+                    _SalonListService.CreateSalon(name, address, phone, email, openhours, opendays);
+                    return RedirectToAction("Index");
+                }
+                else
+                {
+                    throw new Exception("Invalid model state");
+                }
+                
             }
             catch (Exception ex)
             {
@@ -129,6 +137,77 @@ namespace Projekt_MVC.Controllers
          
         }
 
+        [HttpGet]
+        public async Task<ActionResult> GetSalonListJSON()
+        {
+            try
+            {
+                var model = new SalonListViewModel()
+                {
+                    GetSalons = _SalonListService.GetSalons()
+                };
+                return Json(model);
+            }
+            catch (Exception ex)
+            {
+                _logger.LogError(ex, "Error while getting salons");
+                return StatusCode((int)HttpStatusCode.InternalServerError);
+            }
+        }
+        [HttpDelete]
+        public async Task<ActionResult> DeleteSalonJSON(int id)
+        {
+            try
+            {
+                if (id == null)
+                {
+                    return NotFound();
+                }
+                _SalonListService.DeleteSalon(id);
+                return Json(new { Success = true });
+            }
+            catch (Exception ex)
+            {
+                _logger.LogError(ex, "Error while deleting salons");
+                return StatusCode((int)HttpStatusCode.InternalServerError);
+            }
+        }
+        [HttpPost]
+        public async Task<ActionResult> CreateNewSalonJSON(string name, string address, string phone, string email, string openhours, string opendays)
+        {
+            try
+            {
+                if (ModelState.IsValid)
+                {
+                    _SalonListService.CreateSalon(name, address, phone, email, openhours, opendays);
+                    return Json(new { Success = true });
+                }
+                else
+                {
+                    throw new Exception("Invalid model state");
+                }
+                
+            }
+            catch (Exception ex)
+            {
+                _logger.LogError(ex, "Error while creating new salons");
+                return StatusCode((int)HttpStatusCode.InternalServerError);
+            }
+        }
+        [HttpPut]
+        public async Task<ActionResult> EditSalonDetailsJSON(long id, string name, string address, string phone, string email, string openhours, string opendays)
+        {
+            try
+            {
+                _SalonListService.EditSalonList(id, name, address, phone, email, openhours, opendays);
+                return Json(new { Success = true });
+            }
+            catch (Exception ex)
+            {
+                _logger.LogError(ex, "Error while editing salons");
+                return StatusCode((int)HttpStatusCode.InternalServerError);
+            }
+        }
 
     }
 }
