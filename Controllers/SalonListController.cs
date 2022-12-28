@@ -24,6 +24,7 @@ namespace Projekt_MVC.Controllers
                 {
                     GetSalons = _SalonListService.GetSalons()
                 };
+               
                 return View(model);
             }
             catch (Exception ex)

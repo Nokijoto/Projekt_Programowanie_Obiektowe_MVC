@@ -26,7 +26,7 @@ namespace Projekt_MVC.Models
                         Year = "2019",
                         Price = " 100000",
                         Description = "This is a Aston Martin",
-                        Engine = EngineEnum.Petrol,
+                        Engine = 0,
                         HorsePower = 500
 
                     });

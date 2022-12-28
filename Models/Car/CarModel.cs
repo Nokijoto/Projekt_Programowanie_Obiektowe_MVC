@@ -21,6 +21,7 @@
         public EngineEnum Engine { get; set; }
         public int HorsePower { get; set; }
 
+        //Witam czy mnie słychać
 
         //public List<CarModel> Cars { get; set; }
         //public int /*List<CarModel>*/ GetCars()
