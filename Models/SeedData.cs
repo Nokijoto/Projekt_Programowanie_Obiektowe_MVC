@@ -19,7 +19,7 @@ namespace Projekt_MVC.Models
                 context.Cars.AddRange(
                     new CarModel()
                     {
-                        ID = 1,
+                        CarID = 1,
                         Name = "Aston",
                         Model = "Martin",
                         Color = "Black",
@@ -45,6 +45,7 @@ namespace Projekt_MVC.Models
                         Pesel = "00000000000",
                         Data = "12-12-2022",
                         NrTel = 123456789,
+                        CarID=1
                     }
 
                 );

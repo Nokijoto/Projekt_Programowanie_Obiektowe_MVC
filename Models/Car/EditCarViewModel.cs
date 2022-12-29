@@ -8,7 +8,7 @@ namespace Projekt_MVC.Models.Car
     [Keyless]
     public class EditCarViewModel
     {
-        public int ID { get; set; }
+        public int CarID { get; set; }
         
         [Required(ErrorMessage = "Nazwa jest wymagana")]
         [StringLength(50, ErrorMessage = "Nazwa auta nie może byc dłuższa niż 50 znaków.")]

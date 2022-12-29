@@ -58,10 +58,10 @@ namespace Projekt_MVC.Models.TDriveModel
         [MaxLength(9, ErrorMessage = "NrTel nie może być dłuższy niż 9 znaków")]
 
         public int NrTel { get; set; }
-
+        public int CarID { get; set; }
         //[Required(ErrorMessage = "Pole Samochód jest wymagane")]
-       // [Display(Name = "Samochód")]
-       // [DataType(DataType.Custom)]
+        // [Display(Name = "Samochód")]
+        // [DataType(DataType.Custom)]
 
         //public CarModel car { get; set; }
     }

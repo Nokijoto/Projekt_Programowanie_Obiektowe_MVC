@@ -1,8 +1,11 @@
-﻿namespace Projekt_MVC.Models.Car
+﻿using Microsoft.EntityFrameworkCore;
+
+namespace Projekt_MVC.Models.Car
 {
-    public class NewPersonViewModel
+    [Keyless]
+    public class NewCarViewModel
     {
-        public int ID { get; set; }
+        public int CarID { get; set; }
         public string Name { get; set; }
         public string Model { get; set; }
         public string Color { get; set; }

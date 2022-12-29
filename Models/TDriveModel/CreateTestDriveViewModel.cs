@@ -12,7 +12,7 @@ namespace Projekt_MVC.Models.TDriveModel
         private DateTime dateTime = DateTime.UtcNow.Date;
         private string date = DateTime.Now.ToString("yyyy-MM-dd");
        
-        public int ID { get; set; }
+        public int CarID { get; set; }
 
         [Required(ErrorMessage = "Imie jest wymagane")]
         [Display(Name = "Imie")]
@@ -59,14 +59,15 @@ namespace Projekt_MVC.Models.TDriveModel
         [MaxLength(9, ErrorMessage = "NrTel nie może być dłuższy niż 9 znaków")]
 
         public int NrTel { get; set; }
-
+       
         // [Required(ErrorMessage = "Pole Samochód jest wymagane")]
         //[Display(Name = "Samochód")]
         // [DataType(DataType.Custom)]
 
         //  public CarModel car { get; set; }
       
-        }
-
     }
+    
+
+}
 

@@ -183,7 +183,7 @@ namespace Projekt_MVC.Controllers
                 var car = _CarService.GetCar(id);
                 var model = new EditCarViewModel()
                 {
-                    ID = car.ID,
+                    CarID = car.CarID,
                     Name = car.Name,
                     Model = car.Model,
                     Color = car.Color,
