@@ -1,60 +1,52 @@
-﻿@{
-    ViewData["Title"] = "Create Salon";
+﻿@model Projekt_MVC.Models.Salon.CreateSalonListViewModel
+
+<h4>CreateSalonListViewModel</h4>
+<hr />
+<div class="row">
+    <div class="col-md-4">
+        <form method="post" asp-controller="SalonList" asp-action="CreateNewSalon">
+            <div asp-validation-summary="ModelOnly" class="text-danger"></div>
+            <div class="form-group">
+                <label asp-for="Name" class="control-label"></label>
+                <input asp-for="Name" class="form-control" />
+                <span asp-validation-for="Name" class="text-danger"></span>
+            </div>
+            <div class="form-group">
+                <label asp-for="Address" class="control-label"></label>
+                <input asp-for="Address" class="form-control" />
+                <span asp-validation-for="Address" class="text-danger"></span>
+            </div>
+            <div class="form-group">
+                <label asp-for="Phone" class="control-label"></label>
+                <input asp-for="Phone" class="form-control" />
+                <span asp-validation-for="Phone" class="text-danger"></span>
+            </div>
+            <div class="form-group">
+                <label asp-for="Email" class="control-label"></label>
+                <input asp-for="Email" class="form-control" />
+                <span asp-validation-for="Email" class="text-danger"></span>
+            </div>
+            <div class="form-group">
+                <label asp-for="OpenHours" class="control-label"></label>
+                <input asp-for="OpenHours" class="form-control" />
+                <span asp-validation-for="OpenHours" class="text-danger"></span>
+            </div>
+            <div class="form-group">
+                <label asp-for="OpenDays" class="control-label"></label>
+                <input asp-for="OpenDays" class="form-control" />
+                <span asp-validation-for="OpenDays" class="text-danger"></span>
+            </div>
+            <div class="form-group">
+                <input type="submit" value="Create" class="btn btn-primary" />
+            </div>
+        </form>
+    </div>
+</div>
+
+<div>
+    <a asp-action="Index">Back to List</a>
+</div>
+
+@section Scripts {
+    @{await Html.RenderPartialAsync("_ValidationScriptsPartial");}
 }
-<form method="post" asp-controller="SalonList" asp-action="CreateNewSalon">
-
-
-    @*
-    public int ID { get; set; }
-    public string Name { get; set; }
-    public string Address { get; set; }
-    public string Phone { get; set; }
-    public string Email { get; set; }
-    public string OpenHours { get; set; }
-    public string OpenDays { get; set; }
-    *@
-    <div class="form-group">
-        <label for="name">Name</label>
-        <input type="text" class="form-control" id="name" name="name" placeholder="Podaj nazwe salonu">
-    </div>
-    <div class="form-group">
-        <label for="address">Address</label>
-        <input type="text" class="form-control" id="address" name="address" placeholder="Podaj adres salonu">
-    </div>
-    <div class="form-group">
-        <label for="phone">Phone</label>
-        <input type="text" class="form-control" id="phone" name="phone" placeholder="Podaj numer telefonu do salonu">
-    </div>
-    <div class="form-group">
-        <label for="email">Email</label>
-        <input type="text" class="form-control" id="email" name="email" placeholder="Podaj email salonu">
-    </div>
-    <div class="form-group">
-        <label for="openhours">OpenHours</label>
-        <input type="text" class="form-control" id="openhours" name="openhours" placeholder="Podaj godziny otwarcia salonu">
-    </div>
-    <div class="form-group">
-        <label for="opendays">OpenDays</label>
-        <input type="text" class="form-control" id="opendays" name="opendays" placeholder="Podaj dni otwarcia salonu">
-    </div>
-
-
-    @* <div class="form-group">
-    <label for="id">ID</label>
-    <input type="number" class="form-control" id="id" name="id" placeholder="Enter ID">
-    </div>
-    <div class="form-group">
-    <label for="name">Name</label>
-    <input type="text" class="form-control" id="name" name="name" placeholder="Enter Name">
-    </div>
-    <div class="form-group">
-    <label for="name">City</label>
-    <input type="text" class="form-control" id="city" name="city" placeholder="City">
-    </div>
-    <div class="form-group">
-    <label for="name">Gender</label>
-    <input type="number" class="form-control" id="gender" name="gender" placeholder="Gender">
-    </div>*@
-    <br />
-    <button type="submit" class="btn btn-primary">Submit</button>
-</form>

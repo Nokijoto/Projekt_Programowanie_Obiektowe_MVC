@@ -17,6 +17,7 @@ namespace Projekt_MVC.Controllers
             _logger = logger;
             _CarService = CarService;
         }
+        
         public IActionResult Index()
         {
             try
@@ -38,36 +39,50 @@ namespace Projekt_MVC.Controllers
         }
         public IActionResult NewCar()
         {
-            var model = new CreateCarViewModel()
-            {
-                Engine = new List<SelectListItem>()
-                {
-                      new SelectListItem() { Text = "Diesel", Value = "Diesel" },
-                      new SelectListItem() { Text = "Benzyna", Value = "Benzyna" },
-                      new SelectListItem() { Text = "Elektryczny", Value = "Elektryczny" },
-                      new SelectListItem() { Text = "Hybryda", Value = "Hybryda" },
-                 }
-                
-                   
-            };
-
-            foreach (var item in Enum.GetValues(typeof(EngineEnum)))
-            {
-                model.Engine.Add(new SelectListItem()
-                {
-                    Text = item.ToString(),
-                    Value = item.ToString()
-                });
-            }
-            return View(model);
-        }
-        public IActionResult CreateNewCar( string name, string model, string color, string year, string price, string description, EngineEnum engine, int horsePower)
-        {
-
             try
             {
                 if (ModelState.IsValid)
                 {
+                    var model = new CreateCarViewModel()
+                    {
+                        Engine = new List<SelectListItem>()
+                    };
+
+                    foreach (var item in Enum.GetValues(typeof(EngineEnum)))
+                    {
+
+                        model.Engine.Add(new SelectListItem()
+                        {
+                            Text = item.ToString(),
+                            Value = item.ToString()
+                        });
+                    }
+                    return View(model);
+                }
+                else
+                {
+                    return View();
+                }
+              
+            }
+            catch (Exception ex)
+            {
+                _logger.LogError(ex, "Error while getting cars");
+                return StatusCode((int)HttpStatusCode.InternalServerError);
+            }
+           
+        }
+        
+        public IActionResult CreateNewCar( string name, string model, string color, string year, string price, string description, EngineEnum engine, int horsePower)
+        {
+            try
+            {
+                if (ModelState.IsValid)
+                {
+                    if (Int32.Parse(price) <= 0)
+                    {
+                        throw new Exception("Cena nie mniejsza niż 0");
+                    }
                     _CarService.CreateCar(name, model, color, year, price, description, engine, horsePower);
                     return RedirectToAction("Index");
 
@@ -75,17 +90,72 @@ namespace Projekt_MVC.Controllers
                 else
                 {
                     return RedirectToAction("NewCar");
-               
+
                 }
             }
             catch (Exception e)
             {
-                return StatusCode((int)HttpStatusCode.InternalServerError, e.Message);
+                return StatusCode((int)HttpStatusCode.NotAcceptable, e.Message);
             }
+            //try
+            //{
+            //    if (ModelState.IsValid)
+            //    {
+            //        //if (horsePower < 0)
+            //        //{
+            //        //    ModelState.AddModelError("horsePower", "Horse power cannot be negative");
+            //        //    return View("NewCar");
+            //        //}
+            //        //if (year.Length >= 4)
+            //        //{
+            //        //    ModelState.AddModelError("year", "Year must be 4 digits");
+            //        //    return View("NewCar");
+            //        //}
+            //        //if (price.Length < 3)
+            //        //{
+            //        //    ModelState.AddModelError("price", "Price must be at least 3 digits");
+            //        //    return View("NewCar");
+            //        //}
+            //        //if (description.Length < 10)
+            //        //{
+            //        //    ModelState.AddModelError("description", "Description must be at least 10 characters");
+            //        //    return View("NewCar");
+            //        //}
+            //        //if (name.Length < 3)
+            //        //{
+            //        //    ModelState.AddModelError("name", "Name must be at least 3 characters");
+            //        //    return View("NewCar");
+            //        //}
+            //        //if (model.Length < 3)
+            //        //{
+            //        //    ModelState.AddModelError("model", "Model must be at least 3 characters");
+            //        //    return View("NewCar");
+            //        //}
+            //        //if (color.Length < 3)
+            //        //{
+            //        //    ModelState.AddModelError("color", "Color must be at least 3 characters");
+            //        //    return View("NewCar");
+            //        //}
+
+
+            //        _CarService.CreateCar(name, model, color, year, price, description, engine, horsePower);
+            //        return RedirectToAction("Index");
+
+            //    }
+            //    else
+            //    {
+            //        return View("NewCar");
+
+            //    }
+            //    //_CarService.CreateCar(name, model, color, year, price, description, engine, horsePower);
+            //    //return RedirectToAction("Index");
+            //}
+         
            
             //_CarService.CreateCar (name, model, color,year,price,description, engine, horsePower);
             //return RedirectToAction("Index");
         }
+        
         public IActionResult DeleteCar(int id)
         {
             try
@@ -105,8 +175,7 @@ namespace Projekt_MVC.Controllers
             //return RedirectToAction("Index");
         }
 
-
-       
+        
         public IActionResult EditCar(int id)
         {
             try
@@ -114,7 +183,7 @@ namespace Projekt_MVC.Controllers
                 var car = _CarService.GetCar(id);
                 var model = new EditCarViewModel()
                 {
-                    ID = car.ID,
+                    CarID = car.CarID,
                     Name = car.Name,
                     Model = car.Model,
                     Color = car.Color,
@@ -124,15 +193,25 @@ namespace Projekt_MVC.Controllers
                     Engine = new List<SelectListItem>(),
                     HorsePower = car.HorsePower
                 };
+
                 foreach (var item in Enum.GetValues(typeof(EngineEnum)))
                 {
+
                     model.Engine.Add(new SelectListItem()
                     {
                         Text = item.ToString(),
-                        Value = item.ToString(),
-                        Selected = item.ToString() == car.Engine.ToString()
+                        Value = item.ToString()
                     });
                 }
+                //foreach (var item in Enum.GetValues(typeof(EngineEnum)))
+                //{
+                //    model.Engine.Add(new SelectListItem()
+                //    {
+                //        Text = item.ToString(),
+                //        Value = item.ToString(),
+                //        Selected = item.ToString() == car.Engine.ToString()
+                //    });
+                //}
 
                 return View(model);
             }
@@ -141,13 +220,81 @@ namespace Projekt_MVC.Controllers
                 return StatusCode((int)HttpStatusCode.InternalServerError, e.Message);
             }
         }
+    
         public IActionResult EditCarDetails(long id, string name, string model, string color, string year, string price, string description, EngineEnum engine, int horsePower)
         {
+
             _CarService.EditCar(id, name, model, color, year, price, description, engine, horsePower);
             return RedirectToAction("Index");
         }
 
 
+        [HttpGet]
+        public async Task<ActionResult> GetCarsListJson()
+        {
+            var model =  new CarViewModel()
+            {
+                Cars = _CarService.GetCars()
+            };
+            return Json(model);
+            //return Json(new { Data = model }, JsonRequestBehavior.AllowGet);
+        }
 
+        [HttpDelete]
+        public async Task<ActionResult> DeleteCarJson(int id)
+        {
+            try
+            {
+                if (id == null)
+                {
+                    return Json(new { Error= "ID is null" });
+                }
+                _CarService.DeleteCar(id);
+                return Json(new { Success = true });
+            }
+            catch (Exception e)
+            {
+                return StatusCode((int)HttpStatusCode.InternalServerError, e.Message);
+            }
+        }
+        [HttpPost]
+        public async Task<ActionResult> CreateCarJson(string name, string model, string color, string year, string price, string description, EngineEnum engine, int horsePower)
+        {
+            try
+            {
+                if (ModelState.IsValid)
+                {
+                    if (Int32.Parse(price) <= 0)
+                    {
+                        throw new Exception("Cena nie mniejsza niż 0");
+                    }
+                    _CarService.CreateCar(name, model, color, year, price, description, engine, horsePower);
+                    return Json(new { Success = true });
+
+                }
+                else
+                {
+                    return Json(new { Success = false });
+
+                }
+            }
+            catch (Exception e)
+            {
+                return StatusCode((int)HttpStatusCode.NotAcceptable, e.Message);
+            }
+        }
+        [HttpPut]
+        public async Task<ActionResult> EditCarJson(long id, string name, string model, string color, string year, string price, string description, EngineEnum engine, int horsePower)
+        {
+            try
+            {
+                _CarService.EditCar(id, name, model, color, year, price, description, engine, horsePower);
+                return Json(new { Success = true });
+            }
+            catch (Exception e)
+            {
+                return StatusCode((int)HttpStatusCode.InternalServerError, e.Message);
+            }
+        }
     }
 }

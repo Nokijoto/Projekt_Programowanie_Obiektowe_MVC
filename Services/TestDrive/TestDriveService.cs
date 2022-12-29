@@ -1,4 +1,5 @@
 ﻿using Projekt_MVC.Context;
+using Projekt_MVC.Models.Car;
 using Projekt_MVC.Models.TDriveModel;
 
 namespace Projekt_MVC.Services.TestDrive
@@ -6,6 +7,8 @@ namespace Projekt_MVC.Services.TestDrive
     public class TestDriveService : ITestDriveService
     {
         private readonly MainContext _TestDriveService;
+        private readonly Car.CarService _carService;
+
         public TestDriveService(MainContext context)
         {
             _TestDriveService = context;
@@ -15,7 +18,7 @@ namespace Projekt_MVC.Services.TestDrive
         {
             return _TestDriveService.TestDrives.ToList();
         }
-        public void CreateTestDrive( string imie, string nazwisko, string pesel, string data, int nrtel)
+        public void CreateTestDrive( string imie, string nazwisko, string pesel, string data, int nrtel,int CarID)
         {
             var lastId = _TestDriveService.TestDrives.OrderByDescending(x => x.ID).FirstOrDefault()?.ID;
             if (lastId != null)
@@ -27,9 +30,11 @@ namespace Projekt_MVC.Services.TestDrive
                     Nazwisko = nazwisko,
                     Pesel = pesel,
                     Data = data,
-                    NrTel = nrtel
+                    NrTel = nrtel,
+                    CarID=CarID
                 };
                 _TestDriveService.TestDrives.Add(newTD);
+                
                 _TestDriveService.SaveChanges();
             }
 
@@ -52,9 +57,15 @@ namespace Projekt_MVC.Services.TestDrive
             return _TestDriveService.TestDrives.FirstOrDefault(x => x.ID == id) ?? new TestDriveModel();
         }
 
-        public void EditTestDrive(long id, string imie, string nazwisko, string pesel, string data, int nrtel)
+        public void EditTestDrive(long id, string imie, string nazwisko, string pesel, string data, int nrtel, int CarID)
         {
             var TD = _TestDriveService.TestDrives.FirstOrDefault(x => x.ID == id);
+            //var dataNowa = DateTime.Parse(TD.Data);
+            //var now = DateTime.Now;
+            //if (dataNowa < now)
+            //{
+            //    throw new Exception("Data nie może być wcześniejsza niż dzisiejsza");
+            //}
             if (TD != null)
             {
                 TD.Imie = imie;
@@ -62,6 +73,7 @@ namespace Projekt_MVC.Services.TestDrive
                 TD.Pesel = pesel;
                 TD.Data = data;
                 TD.NrTel = nrtel;
+                TD.CarID = CarID;
                 _TestDriveService.Update(TD);
                 _TestDriveService.SaveChanges();
             }

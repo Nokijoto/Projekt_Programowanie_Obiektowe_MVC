@@ -1,3 +1,4 @@
+using Microsoft.AspNetCore.Mvc;
 using Microsoft.EntityFrameworkCore;
 using Projekt_MVC.Context;
 using Projekt_MVC.Models;
@@ -41,5 +42,10 @@ app.UseAuthorization();
 app.MapControllerRoute(
     name: "default",
     pattern: "{controller=Home}/{action=Index}/{id?}");
+
+
+//app.MapControllerRoute(
+//    name: "carlist",
+//    pattern: "{controller=CarList}/{action=NewCar}/");
 
 app.Run();

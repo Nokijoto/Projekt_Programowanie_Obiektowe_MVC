@@ -1,5 +1,9 @@
-﻿namespace Projekt_MVC.Models.Car
+﻿using Microsoft.EntityFrameworkCore;
+using System.ComponentModel.DataAnnotations;
+
+namespace Projekt_MVC.Models.Car
 {
+    
     public class CarModel
     {
         public CarModel()
@@ -10,8 +14,8 @@
         //public string Name { get; set; }
         //public EngineEnum Gender { get; set; }
         //public string City { get; set; }
-
-        public int ID { get; set; }
+        [Key]
+        public int CarID { get; set; }
         public string Name { get; set; }
         public string Model { get; set; }
         public string Color { get; set; }
@@ -21,6 +25,7 @@
         public EngineEnum Engine { get; set; }
         public int HorsePower { get; set; }
 
+        //Witam czy mnie słychać
 
         //public List<CarModel> Cars { get; set; }
         //public int /*List<CarModel>*/ GetCars()

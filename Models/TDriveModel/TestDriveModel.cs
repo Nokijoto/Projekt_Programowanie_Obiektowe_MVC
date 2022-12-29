@@ -14,6 +14,8 @@ namespace Projekt_MVC.Models.TDriveModel
         public string Pesel { get; set; }
         public string Data { get; set; }
         public int NrTel { get; set; }
+            
+        public int CarID { get; set; }
 
     }
 

@@ -1,72 +1,61 @@
-﻿@{
-    ViewData["Title"] = "Create Car";
+﻿@model Projekt_MVC.Models.Car.CreateCarViewModel
+
+<h4>Dodaj samochód do bazy</h4>
+<hr />
+<div class="row">
+    <div class="col-md-4">
+        <form asp-controller="CarList" asp-action="CreateNewCar">
+            <div asp-validation-summary="ModelOnly" class="text-danger"></div>
+            <div class="form-group">
+                <label asp-for="Name" class="control-label"></label>
+                <input asp-for="Name" class="form-control" />
+                <span asp-validation-for="Name" class="text-danger"></span>
+            </div>
+            <div class="form-group">
+                <label asp-for="Model" class="control-label"></label>
+                <input asp-for="Model" class="form-control" />
+                <span asp-validation-for="Model" class="text-danger"></span>
+            </div>
+            <div class="form-group">
+                <label asp-for="Color" class="control-label"></label>
+                <input asp-for="Color" class="form-control" />
+                <span asp-validation-for="Color" class="text-danger"></span>
+            </div>
+            <div class="form-group">
+                <label asp-for="Year" class="control-label"></label>
+                <input asp-for="Year" class="form-control" />
+                <span asp-validation-for="Year" class="text-danger"></span>
+            </div>
+            <div class="form-group">
+                <label asp-for="Price" class="control-label"></label>
+                <input asp-for="Price" class="form-control" />
+                <span asp-validation-for="Price" class="text-danger"></span>
+            </div>
+            <div class="form-group">
+                <label asp-for="Description" class="control-label"></label>
+                <input asp-for="Description" class="form-control" />
+                <span asp-validation-for="Description" class="text-danger"></span>
+            </div>
+            <div class="form-group">
+                <label asp-for="HorsePower" class="control-label"></label>
+                <input asp-for="HorsePower" class="form-control" />
+                <span asp-validation-for="HorsePower" class="text-danger"></span>
+            </div>
+             <div class="form-group">
+            <label for="mileage">Engine</label>
+            <select id="Engine" name="Engine" class="form-control" required asp-items="@Model.Engine"></select>
+            </div>
+            <div class="form-group">
+                <input type="submit" value="Create" class="btn btn-primary" />
+            </div>
+        </form>
+    </div>
+</div>
+
+<div>
+    <a asp-action="Index">Back to List</a>
+</div>
+
+@section Scripts {
+    @{await Html.RenderPartialAsync("_ValidationScriptsPartial");}
 }
-<form method="post" asp-controller="CarList" asp-action="CreateNewCar">
-
-
-    @*
-    create form for new car based on CarModel.cs
-    public int ID { get; set; }
-    public string Name { get; set; }
-    public string Model { get; set; }
-    public string Color { get; set; }
-    public string Year { get; set; }
-    public string Price { get; set; }
-    public string Description { get; set; }
-    public EngineEnum Engine { get; set; }
-    public int HorsePower { get; set; }
-    *@
-    <div class="form-group">
-        <label for="name">Name</label>
-        <input type="text" class="form-control" id="name" name="name" placeholder="Enter Name">
-    </div>
-    <div class="form-group">
-        <label for="model">Model</label>
-        <input type="text" class="form-control" id="model" name="model" placeholder="Enter Model">
-    </div>
-    <div class="form-group">
-        <label for="year">Year</label>
-        <input type="text" class="form-control" id="year" name="year" placeholder="Enter Year">
-    </div>
-    <div class="form-group">
-        <label for="color">Color</label>
-        <input type="text" class="form-control" id="color" name="color" placeholder="Enter Color">
-    </div>
-    <div class="form-group">
-        <label for="price">Price</label>
-        <input type="text" class="form-control" id="price" name="price" placeholder="Enter Price">
-    </div>
-    <div class="form-group">
-        <label for="mileage">Description</label>
-        <input type="text" class="form-control" id="description" name="description" placeholder="Enter Description">
-    </div>
-    <div class="form-group">
-        <label for="mileage">Engine</label>
-        <select id="Engine" name="Engine" class="form-control" required asp-items="@Model.Engine"></select>
-    </div>
-    <div class="form-group">
-        <label for="mileage">HorsePower</label>
-        <input type="number" class="form-control" id="horsepower" name="horsepower" placeholder="Enter HorsePower">
-    </div>
-
-
-    @* <div class="form-group">
-    <label for="id">ID</label>
-    <input type="number" class="form-control" id="id" name="id" placeholder="Enter ID">
-    </div>
-    <div class="form-group">
-    <label for="name">Name</label>
-    <input type="text" class="form-control" id="name" name="name" placeholder="Enter Name">
-    </div>
-    <div class="form-group">
-    <label for="name">City</label>
-    <input type="text" class="form-control" id="city" name="city" placeholder="City">
-    </div>
-    <div class="form-group">
-    <label for="name">Gender</label>
-    <input type="number" class="form-control" id="gender" name="gender" placeholder="Gender">
-    </div>*@
-    <br />
-
-    <button type="submit" class="btn btn-primary">Submit</button>
-</form>

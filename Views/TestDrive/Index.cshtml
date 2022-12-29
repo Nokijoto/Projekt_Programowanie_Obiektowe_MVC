@@ -1,6 +1,7 @@
 ﻿@model Projekt_MVC.Models.TDriveModel.TestDriveViewModel
 @{
     ViewData["Title"] = "TestDrives";
+    
 }
 
 <table class="table">
@@ -12,6 +13,7 @@
             <th scope="row">Pesel</th>
             <th scope="row">Data</th>
             <th scope="row">nrTel<th>
+            <th scope="row">CarID<th>
         </tr>
     </thead>
     <tbody>
@@ -24,6 +26,8 @@
                 <th scope="row">@item.Pesel</th>
                 <th scope="row">@item.Data</th>
                 <th scope="row">@item.NrTel<th>
+                <th scope="row">@item.CarID</th>
+               
                 <td>
                    
                     <a asp-controller="TestDrive" asp-action="DeleteTestDrive" asp-route-id="@item.ID">Delete</a>
