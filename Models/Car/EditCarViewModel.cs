@@ -3,18 +3,20 @@
 using Microsoft.EntityFrameworkCore;
 using System.ComponentModel.DataAnnotations;
 
+
+
 namespace Projekt_MVC.Models.Car
 {
     [Keyless]
     public class EditCarViewModel
     {
         public int CarID { get; set; }
-        
+
         [Required(ErrorMessage = "Nazwa jest wymagana")]
         [StringLength(50, ErrorMessage = "Nazwa auta nie może byc dłuższa niż 50 znaków.")]
         [Display(Name = "Firma")]
         [DataType(DataType.Text)]
-        [RegularExpression(@"^{3,50}", ErrorMessage = "Nazwa auta musi mieć od 3 do 50 znaków")]
+        [RegularExpression(@"^[AaĄąBbCcĆćDdEeĘęFfGgHhIiJjKkLlŁłMmNnŃńOoÓóPpRrSsŚśTtUuWwYyZzŹźŻża-zA-Z0-9\s]*$", ErrorMessage = "Nazwa auta musi zaczynać się wielką literą")]
         [MinLength(3, ErrorMessage = "Nazwa nie może być krótsza niż 3 litery")]
         [MaxLength(50, ErrorMessage = "Nazwa nie może być dłuższa niż 50 liter")]
         public string Name { get; set; }
@@ -23,57 +25,58 @@ namespace Projekt_MVC.Models.Car
         [StringLength(50, ErrorMessage = "Nazwa modelu nie może byc dłuższa niż 50 znaków.")]
         [Display(Name = "Model")]
         [DataType(DataType.Text)]
-        [RegularExpression(@"^{3,50}", ErrorMessage = "Nazwa modelu musi zaczynać się wielką literą")]
+        [RegularExpression(@"^[AaĄąBbCcĆćDdEeĘęFfGgHhIiJjKkLlŁłMmNnŃńOoÓóPpRrSsŚśTtUuWwYyZzŹźŻża-zA-Z0-9\s]*$", ErrorMessage = "Nazwa modelu musi zaczynać się wielką literą")]
         [MinLength(3, ErrorMessage = "Nazwa modelu nie może być krótsza niż 3 litery")]
         [MaxLength(50, ErrorMessage = "Nazwa modelu nie może być dłuższa niż 50 liter")]
         public string Model { get; set; }
 
         [Required(ErrorMessage = "Kolor jest wymagany")]
-        [StringLength(50, ErrorMessage = "Nazwa nie może byc dłuższa niż 50 znaków.")]
+        [StringLength(50, ErrorMessage = "Nazwa nie może być dłuższa niż 50 znaków.")]
         [Display(Name = "Kolor")]
         [DataType(DataType.Text)]
-        [RegularExpression(@"^{3,50}", ErrorMessage = "Kolor musi zaczynać się wielką literą")]
+        [RegularExpression(@"^[AaĄąBbCcĆćDdEeĘęFfGgHhIiJjKkLlŁłMmNnŃńOoÓóPpRrSsŚśTtUuWwYyZzŹźŻża-zA-Z\s]*$", ErrorMessage = "Kolor musi zaczynać się wielką literą oraz składć się z liter")]
         [MinLength(3, ErrorMessage = "Nazwa nie może być krótsza niż 3 litery")]
         [MaxLength(50, ErrorMessage = "Nazwa nie może być dłuższa niż 50 liter")]
 
         public string Color { get; set; }
 
         [Required(ErrorMessage = "Rok jest wymagany")]
-        [Display(Name = "Year")]
+        [Display(Name = "Rok produkcji")]
         [DataType(DataType.Text)]
-        [RegularExpression(@"^[0-9]{4,4}", ErrorMessage = "Rok musi składać się z 4 cyfr")]
+        [RegularExpression(@"^[\d0-9]{4,4}", ErrorMessage = "Rok musi składać się z 4 cyfr")]
         [MinLength(4, ErrorMessage = "Rok nie może być krótszy niż 4 cyfry")]
         [MaxLength(4, ErrorMessage = "Rok nie może być dłuższy niż 4 cyfry")]
 
         public string Year { get; set; }
 
         [Required(ErrorMessage = "Cena jest wymagana")]
-        [Display(Name = "Price")]
+        [Display(Name = "Cena")]
         [DataType(DataType.Text)]
+        [RegularExpression(@"^[\d0-9]{0,50}", ErrorMessage = "Cena musi być cyframi")]
+
         public string Price { get; set; }
 
         [Required(ErrorMessage = "Opis jest wymagany")]
         [StringLength(50, ErrorMessage = "Opis nie może byc dłuższy niż 50 znaków.")]
-        [Display(Name = "Description")]
+        [Display(Name = "Opis")]
         [DataType(DataType.Text)]
-        [RegularExpression(@"^{3,50}", ErrorMessage = "Opis musi zaczynać się wielką literą")]
+        [RegularExpression(@"^[AaĄąBbCcĆćDdEeĘęFfGgHhIiJjKkLlŁłMmNnŃńOoÓóPpRrSsŚśTtUuWwYyZzŹźŻża-zA-Z0-9\s]{3,50}$", ErrorMessage = "Opis musi zaczynać się wielką literą")]
         [MinLength(3, ErrorMessage = "Opis nie może być krótszy niż 3 litery")]
         [MaxLength(50, ErrorMessage = "Opis nie może być dłuższy niż 50 liter")]
         public string Description { get; set; }
 
-        [Required(ErrorMessage = "Silnik jest wymagany")]
-        [Display(Name = "typ Silnika")]
 
         public List<SelectListItem> Engine { get; set; }
 
 
-        [Required(ErrorMessage = "Moc silnika jest wymagany")]
-        [Display(Name = "HorsePower")]
+        [Required(ErrorMessage = "Silnik jest wymagany")]
+        [Display(Name = "Moc silnika w KM")]
         [DataType(DataType.Text)]
-        [RegularExpression(@"^[0-9]{1,4}", ErrorMessage = "Ilość koni musi składać się z 1-4 cyfr")]
+        [RegularExpression(@"^[\d0-9]{2,3}", ErrorMessage = "Ilość koni musi składać się z 2-3 cyfr i być z przedziału 10-1000")]
 
-        [Range(10, 1000, ErrorMessage = "Ilość koni musi być z przedziału 1-1000")]
+        [Range(10, 1000, ErrorMessage = "Ilość koni musi być z przedziału 10-1000")]
         public int HorsePower { get; set; }
+
 
     }
 }

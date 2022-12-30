@@ -15,12 +15,15 @@
             <div class="form-group fw-bold" style="display:none">
                 <label asp-for="ID" class="control-label mb-1"></label>
                 <input asp-for="ID" readonly class="form-control mb-1" />
+               
                 <span asp-validation-for="ID" class="text" id="danger"></span>
             </div>
             <div class="form-group fw-bold">
                 <label asp-for="Name" class="control-label mb-1"></label>
-                <input asp-for="Name" class="form-control mb-1" />
-                <span asp-validation-for="Name" class="text" id="danger"></span>
+               @* <input asp-for="Name" class="form-control mb-1" />
+                <span asp-validation-for="Name" class="text" id="danger"></span>*@
+                @Html.EditorFor(Model => Model.Name, new { htmlAttributes = new { @id="name", @name="name", @required="required" } })
+                @Html.ValidationMessageFor(Model => Model.Name)
             </div>
             <div class="form-group fw-bold">
                 <label asp-for="Address" class="control-label mb-1"></label>
