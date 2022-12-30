@@ -3,6 +3,7 @@ using System.Net;
 using Projekt_MVC.Services.TestDrive;
 using Projekt_MVC.Models.TDriveModel;
 using Projekt_MVC.Services.Car;
+using Microsoft.EntityFrameworkCore.Metadata.Internal;
 
 namespace Projekt_MVC.Controllers
 
@@ -41,13 +42,22 @@ namespace Projekt_MVC.Controllers
         {
             try
             {
-
-                var model = new CreateTestDriveViewModel()
+               
+                if (ModelState.IsValid)
                 {
-                    CarID = CarID
-                };
-                
-                return View(model);
+
+                    var model = new CreateTestDriveViewModel()
+                    {
+                        CarID = CarID
+                    };
+
+                    return View(model);
+                }
+                else
+                {
+                    return RedirectToAction("NewTestDrive", new { CarID = CarID });
+                }
+
 
             }
             catch (Exception ex)
@@ -70,7 +80,7 @@ namespace Projekt_MVC.Controllers
                 else
                 {
                     return RedirectToAction("NewTestDrive", new { imie = imie, nazwisko = nazwisko, pesel = pesel, data = data, nrtel = nrtel, CarID = CarID });
-                    
+
                 }
             }
             catch (Exception ex)
@@ -106,24 +116,34 @@ namespace Projekt_MVC.Controllers
         {
             try
             {
-               
-
-                var TD = _TestDriveService.GetTestDrives(id);
-
-                var model = new EditTestDriveModel()
+                if (id == null)
                 {
-                    ID = TD.ID,
-                    Imie = TD.Imie,
-                    Nazwisko = TD.Nazwisko,
-                    Pesel = TD.Pesel,
-                    Data = TD.Data,
-                    NrTel = TD.NrTel,
-                    CarID = TD.CarID
-                    
-                };
+                    return NotFound();
+                }
+                if (ModelState.IsValid)
+                {
+
+                    var TD = _TestDriveService.GetTestDrives(id);
+
+                    var model = new EditTestDriveModel()
+                    {
+                        ID = TD.ID,
+                        Imie = TD.Imie,
+                        Nazwisko = TD.Nazwisko,
+                        Pesel = TD.Pesel,
+                        Data = TD.Data,
+                        NrTel = TD.NrTel,
+                        CarID = TD.CarID
+
+                    };
 
 
-                return View(model);
+                    return View(model);
+                }
+                else
+                {
+                    return RedirectToAction("Index");
+                }
             }
             catch (Exception ex)
             {
@@ -136,8 +156,16 @@ namespace Projekt_MVC.Controllers
         {
             try
             {
-                _TestDriveService.EditTestDrive(id, imie, nazwisko, pesel, data, nrtel,CarID);
-                return RedirectToAction("Index");
+                if (ModelState.IsValid)
+                {
+                    _TestDriveService.EditTestDrive(id, imie, nazwisko, pesel, data, nrtel, CarID);
+                    return RedirectToAction("Index");
+                }
+                else
+                {
+                    return RedirectToAction("EditTestDrive", new { id = id, imie = imie, nazwisko = nazwisko, pesel = pesel, data = data, nrtel = nrtel, CarID = CarID });
+                }
+               
 
             }
             catch (Exception ex)

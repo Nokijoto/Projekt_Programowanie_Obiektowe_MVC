@@ -118,32 +118,40 @@ namespace Projekt_MVC.Controllers
         {
             try
             {
-                var car = _CarService.GetCar(id);
-                var model = new EditCarViewModel()
+                if (ModelState.IsValid)
                 {
-                    CarID = car.CarID,
-                    Name = car.Name,
-                    Model = car.Model,
-                    Color = car.Color,
-                    Year = car.Year,
-                    Price = car.Price,
-                    Description = car.Description,
-                    Engine = new List<SelectListItem>(),
-                    HorsePower = car.HorsePower
-                };
-
-                foreach (var item in Enum.GetValues(typeof(EngineEnum)))
-                {
-
-                    model.Engine.Add(new SelectListItem()
+                    var car = _CarService.GetCar(id);
+                    var model = new EditCarViewModel()
                     {
-                        Text = item.ToString(),
-                        Value = item.ToString()
-                    });
+                        CarID = car.CarID,
+                        Name = car.Name,
+                        Model = car.Model,
+                        Color = car.Color,
+                        Year = car.Year,
+                        Price = car.Price,
+                        Description = car.Description,
+                        Engine = new List<SelectListItem>(),
+                        HorsePower = car.HorsePower
+                    };
+
+                    foreach (var item in Enum.GetValues(typeof(EngineEnum)))
+                    {
+
+                        model.Engine.Add(new SelectListItem()
+                        {
+                            Text = item.ToString(),
+                            Value = item.ToString()
+                        });
+                    }
+
+
+                    return View(model);
+                }
+                else
+                {
+                    return RedirectToAction("EditCar",new {CarID=id});
                 }
                 
-
-                return View(model);
             }
             catch (Exception e)
             {
@@ -154,9 +162,19 @@ namespace Projekt_MVC.Controllers
         public IActionResult EditCarDetails(long CarID, string name, string model, string color, string year, string price, string description, EngineEnum engine, int horsePower)
         {
 
-            _CarService.EditCar(CarID, name, model, color, year, price, description, engine, horsePower);
-
-            return RedirectToAction("Index");
+            if (ModelState.IsValid)
+            {
+                if (Int32.Parse(price) <= 0)
+                {
+                    throw new Exception("Cena nie mniejsza niż 0");
+                }
+                _CarService.EditCar(CarID, name, model, color, year, price, description, engine, horsePower);
+                return RedirectToAction("Index");
+            }
+            else
+            {
+                return RedirectToAction("EditCar", new { CarID=CarID, name=name,model=model });
+            }
         }
 
 
@@ -180,17 +198,17 @@ namespace Projekt_MVC.Controllers
         }
 
         [HttpDelete]
-        public async Task<ActionResult> DeleteCarJson(int id)
+        public async Task<ActionResult> DeleteCarJson(int CarID)
         {
             try
             {
-                if (id == null)
+                if (CarID == null)
                 {
                     throw new Exception("Niepoprawne ID");
                    
                     
                 }
-                _CarService.DeleteCar(id);
+                _CarService.DeleteCar(CarID);
                 return Json(new { Status = "Delete Succesfull"});
             }
             catch (Exception e)
@@ -224,6 +242,7 @@ namespace Projekt_MVC.Controllers
                 return Json(new { Status = "Add Failed", ErrorMessage = e.Message });
             }
         }
+      
         [HttpPut]
         public async Task<ActionResult> EditCarJson(long CarID, string name, string model, string color, string year, string price, string description, EngineEnum engine, int horsePower)
         {

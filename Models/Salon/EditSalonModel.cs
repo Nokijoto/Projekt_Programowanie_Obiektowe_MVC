@@ -11,53 +11,35 @@ namespace Projekt_MVC.Models.Salon
         {
         }
         public int ID { get; set; }
-        [Required(ErrorMessage = "Nazwa jest wymagana")]
-        [StringLength(50, ErrorMessage = "Nazwa Salonu niepoprawna.")]
-        [Display(Name = "Nazwa")]
-        [DataType(DataType.Text)]
-        [RegularExpression(@"^{3,50}$", ErrorMessage = "Nazwa Salonu nie jest poprawna.")]
-        [MinLength(3, ErrorMessage = "Nazwa musi zawierać conajmniej 3 znaki")]
-        [MaxLength(50, ErrorMessage = "Nazwa może zawierać najwięcej 50 znaków")]
+        [Required]
+        [Display(Name = "Name")]
+        [RegularExpression(@"^[AaĄąBbCcĆćDdEeĘęFfGgHhIiJjKkLlŁłMmNnŃńOoÓóPpRrSsŚśTtUuWwYyZzŹźŻża-zA-Z0-9\s]*$", ErrorMessage = "Nazwa Salonu nie jest poprawna.")]
         public string Name { get; set; }
 
-        [Required(ErrorMessage = "Adres jest wymagany")]
-        [StringLength(50, ErrorMessage = "Adres nie poprawny.")]
-        [Display(Name = "Adres")]
-        [DataType(DataType.Text)]
-        [RegularExpression(@"^{3,50}$", ErrorMessage = "Adres nie jest poprawny.")]
-        [MinLength(3, ErrorMessage = "Adres musi mieć conajmniej 3 znaki")]
-        [MaxLength(50, ErrorMessage = "Adres musi mieć najwiecej 50 znaków")]
+        [Required]
+        [Display(Name = "Address")]
         public string Address { get; set; }
 
-        [Required(ErrorMessage = "Numer telefonu jest wymagany")]
-        [StringLength(9, ErrorMessage = "Telefon musi składać się z 9 cyfr")]
-        [Display(Name = "NrTelefonu")]
-        [DataType(DataType.Text)]
-        [RegularExpression(@"^[0-9]{9,9}$", ErrorMessage = "Telefon musi składać się z 9 cyfr")]
-        [MinLength(9, ErrorMessage = "Telefon musi składać się z 9 cyfr")]
-        [MaxLength(9, ErrorMessage = "Telefon musi składać się z 9 cyfr")]
-
+        [Required]
+        [Display(Name = "Phone")]
+        [DataType(DataType.PhoneNumber)]
+        [RegularExpression(@"^(\d{3}-\d{3}-\d{3}|^\d{3}\d{3}\d{3})$", ErrorMessage = "Telefon musi być w formacie : 123-123-123 lub 123123123 ")]
         public string Phone { get; set; }
 
-        [Required(ErrorMessage = "Email jest wymagany")]
-        [EmailAddress(ErrorMessage = "Niepoprawny adres email")]
+        [Required]
         [Display(Name = "Email")]
-        [DataType(DataType.Text)]
+        [DataType(DataType.EmailAddress)]
+        [RegularExpression(@"^[\w-\.]+@([\w-]+\.)+[\w-]{2,4}$", ErrorMessage = "Email nie jest poprawny.")]
         public string Email { get; set; }
 
-        [Required(ErrorMessage = "Godziny otwarcia są wymagane")]
-        [StringLength(50, ErrorMessage = "Godziny otwarcia są niepoprawne.")]
-        [Display(Name = "Godziny Otwarcia")]
-        [DataType(DataType.Text)]
-        [RegularExpression(@"^[0-9-]{3,50}$", ErrorMessage = "Godziny otwarcia powinny mieć następujący format 8-16")]
+        [Required]
+        [Display(Name = "Open Hours")]
+        [RegularExpression(@"^([0-1]?[0-9]|2[0-3]):[0-5][0-9]-([0-1]?[0-9]|2[0-3]):[0-5][0-9]$", ErrorMessage = "Godziny otwarcia muszą być w formacie: 00:00-00:00")]
         public string OpenHours { get; set; }
 
-        [Required(ErrorMessage = "Dni otwarcia są wymagane")]
-        [StringLength(50, ErrorMessage = "Dni otwarcia są niepoprawne.")]
-        [Display(Name = "Dni otwarcia")]
-        [DataType(DataType.Text)]
-        [RegularExpression(@"^{3,50}$", ErrorMessage = "Dni otwarcia powinny mieć następujący format pn-pt")]
-
+        [Required]
+        [Display(Name = "Open Days")]
+        [RegularExpression(@"^[AaĄąBbCcĆćDdEeĘęFfGgHhIiJjKkLlŁłMmNnŃńOoÓóPpRrSsŚśTtUuWwYyZzŹźŻża-zA-Z0-9\s-]*$", ErrorMessage = "Dni otwarcia muszą być w formacie: Poniedziałek-Niedziela")]
         public string OpenDays { get; set; }
     }
 }

@@ -40,8 +40,17 @@ namespace Projekt_MVC.Controllers
         {
             try
             {
+
                 var model = new CreateSalonListViewModel();
-                return View(model);
+                if (ModelState.IsValid)
+                {
+                    return View(model);
+                }
+                else
+                {
+                    return RedirectToAction("NewSalon");
+                }
+                
 
             }
             catch (Exception ex)
@@ -50,21 +59,27 @@ namespace Projekt_MVC.Controllers
                 return StatusCode((int)HttpStatusCode.InternalServerError);
             }
     }
-
-        public IActionResult CreateNewSalon(string name, string address, string phone, string email, string openhours, string opendays)
+        [HttpPost]
+        [ValidateAntiForgeryToken]
+        public IActionResult CreateNewSalon(CreateSalonListViewModel model)
         {
             try
             {
+                Console.WriteLine(Json(model));
+                TryValidateModel(this.ModelState);
+        
                 if (ModelState.IsValid)
                 {
-                    _SalonListService.CreateSalon(name, address, phone, email, openhours, opendays);
+                    _SalonListService.CreateSalon(model.Name, model.Address, model.Phone, model.Email, model.OpenHours, model.OpenDays);
                     return RedirectToAction("Index");
                 }
                 else
                 {
-                    throw new Exception("Invalid model state");
+                    Console.WriteLine(Json(model));
+                    return RedirectToAction("NewSalon");
                 }
-                
+
+
             }
             catch (Exception ex)
             {
@@ -96,24 +111,32 @@ namespace Projekt_MVC.Controllers
         {
             try
             {
-                if (id == null)
+                if (ModelState.IsValid)
                 {
-                    return NotFound();
-                }
-                var SL = _SalonListService.GetSalons(id);
-                var model = new EditSalonModel()
-                {
+                    if (id == null)
+                    {
+                        return NotFound();
+                    }
+                    var SL = _SalonListService.GetSalons(id);
+                    var model = new EditSalonModel()
+                    {
 
-                    ID = SL.ID,
-                    Name = SL.Name,
-                    Address = SL.Address,
-                    Phone = SL.Phone,
-                    Email = SL.Email,
-                    OpenHours = SL.OpenHours,
-                    OpenDays = SL.OpenDays,
-                };
-                 
-                return View(model);
+                        ID = SL.ID,
+                        Name = SL.Name,
+                        Address = SL.Address,
+                        Phone = SL.Phone,
+                        Email = SL.Email,
+                        OpenHours = SL.OpenHours,
+                        OpenDays = SL.OpenDays,
+                    };
+
+                    return View(model);
+                }
+                else
+                {
+                    return RedirectToAction("EditSalonList", new { id = id });
+                }
+               
             }
             catch (Exception ex)
             {
@@ -126,8 +149,16 @@ namespace Projekt_MVC.Controllers
         {
             try
             {
-                _SalonListService.EditSalonList(id, name, address, phone, email, openhours, opendays);
-                return RedirectToAction("Index");
+                if (ModelState.IsValid)
+                {
+                    _SalonListService.EditSalonList(id, name, address, phone, email, openhours, opendays);
+                    return RedirectToAction("Index");
+                }
+                else
+                {
+                    return RedirectToAction("EditSalonList", new { id = id });
+                }
+                
             }
             catch (Exception ex)
             {
