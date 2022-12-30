@@ -4,12 +4,15 @@
 }
 <style>
     body {
-        background-color: black;
+        background-color: #D98179;
         
     }
 </style>
-<a asp-controller="SalonList" asp-action="NewSalon" role="button">Dodaj Salon</a>
-<table class="table text-light">
+<h1 class="display-4 text-center link-dark fw-bold mb-3">Dostępne Salony</h1>
+<br />
+<a class="btn btn-primary btn-lg mx-auto d-block w-75 " asp-controller="SalonList" asp-action="NewSalon" role="button">Dodaj Salon</a>
+<br />
+<table class="table">
     <thead>
         <tr>
             <th scope="row">ID</th>
@@ -19,7 +22,6 @@
             <th scope="row">Email</th>
             <th scope="row">OpenHours</th>
             <th scope="row">OpenDays</th>
-            
         </tr>
     </thead>
     <tbody>
@@ -34,12 +36,20 @@
                 <th scope="row">@item.OpenHours</th>
                 <th scope="row">@item.OpenDays</th>
                 <td>
-                    
-                   <a class="btn btn-primary btn-sm float-start" asp-controller="SalonList" asp-action="DeleteSalonList" asp-route-id="@item.ID" role="button">Delete</a>
-                   <a class="btn btn-primary btn-sm float-end" asp-controller="SalonList" asp-action="EditSalonList" asp-route-id="@item.ID" role="button">Edit</a>
-            <figure class="figure mx-auto d-block">
+
+                    <a class="btn btn-primary btn-sm float-start" id="delete" asp-controller="SalonList" asp-action="DeleteSalonList" asp-route-id="@item.ID" role="button">Usuń salon</a>
+                    <a class="btn btn-primary btn-sm float-end" id="edit" asp-controller="SalonList" asp-action="EditSalonList" asp-route-id="@item.ID" role="button">Edytuj salon</a>
+           
                 </td>
             </tr>
         }
     </tbody>
 </table>
+<footer class="border-top footer">
+    <div class="text-center">
+        Projekt wykonali:
+        <a href="https://github.com/Nokijoto">Rafał Wątroba</a>
+        i
+        <a href="https://github.com/kowu0">Remigiusz Wojak</a>
+    </div>
+</footer>

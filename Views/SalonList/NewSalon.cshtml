@@ -1,51 +1,69 @@
 ﻿@model Projekt_MVC.Models.Salon.CreateSalonListViewModel
 
-<h4>CreateSalonListViewModel</h4>
+
+<style>
+    body {
+        background-color: #D98179;
+    }
+</style>
+
+
+<h3 class="display-5 text-center link-dark fw-bold mb-3">Dodaj dane o salonie</h3>
 <hr />
-<div class="row">
+<div class="row justify-content-center">
     <div class="col-md-4">
         <form method="post" asp-controller="SalonList" asp-action="CreateNewSalon">
             <div asp-validation-summary="ModelOnly" class="text-danger"></div>
-            <div class="form-group">
-                <label asp-for="Name" class="control-label"></label>
-                <input asp-for="Name" class="form-control" />
-                <span asp-validation-for="Name" class="text-danger"></span>
+            <div class="form-group fw-bold">
+                <label asp-for="Name" class="control-label mb-1"></label>
+                <input asp-for="Name" class="form-control mb-1" />
+                <span asp-validation-for="Name" class="text" id="danger"></span>
             </div>
-            <div class="form-group">
-                <label asp-for="Address" class="control-label"></label>
-                <input asp-for="Address" class="form-control" />
-                <span asp-validation-for="Address" class="text-danger"></span>
+            <div class="form-group fw-bold">
+                <label asp-for="Address" class="control-label mb-1"></label>
+                <input asp-for="Address" class="form-control mb-1" />
+                <span asp-validation-for="Address" class="text" id="danger"></span>
             </div>
-            <div class="form-group">
-                <label asp-for="Phone" class="control-label"></label>
-                <input asp-for="Phone" class="form-control" />
-                <span asp-validation-for="Phone" class="text-danger"></span>
+            <div class="form-group fw-bold">
+                <label asp-for="Phone" class="control-label mb-1"></label>
+                <input asp-for="Phone" class="form-control mb-1" />
+                <span asp-validation-for="Phone" class="text" id="danger"></span>
             </div>
-            <div class="form-group">
-                <label asp-for="Email" class="control-label"></label>
-                <input asp-for="Email" class="form-control" />
-                <span asp-validation-for="Email" class="text-danger"></span>
+            <div class="form-group fw-bold">
+                <label asp-for="Email" class="control-label mb-1"></label>
+                <input asp-for="Email" class="form-control mb-1" />
+                <span asp-validation-for="Email" class="text" id="danger"></span>
             </div>
-            <div class="form-group">
-                <label asp-for="OpenHours" class="control-label"></label>
-                <input asp-for="OpenHours" class="form-control" />
-                <span asp-validation-for="OpenHours" class="text-danger"></span>
+            <div class="form-group fw-bold">
+                <label asp-for="OpenHours" class="control-label mb-1"></label>
+                <input asp-for="OpenHours" class="form-control mb-1" />
+                <span asp-validation-for="OpenHours" class="text" id="danger"></span>
             </div>
-            <div class="form-group">
-                <label asp-for="OpenDays" class="control-label"></label>
-                <input asp-for="OpenDays" class="form-control" />
-                <span asp-validation-for="OpenDays" class="text-danger"></span>
+            <div class="form-group fw-bold">
+                <label asp-for="OpenDays" class="control-label mb-1"></label>
+                <input asp-for="OpenDays" class="form-control mb-1" />
+                <span asp-validation-for="OpenDays" class="text" id="danger"></span>
             </div>
-            <div class="form-group">
-                <input type="submit" value="Create" class="btn btn-primary" />
+            <div class="form-group fw-bold">
+                <input type="submit" value="Dodaj" class="btn btn-primary btn-lg mx-auto d-block w-25" id="add" />
             </div>
         </form>
     </div>
 </div>
 
-<div>
+<div class="text-center">
+    <br />
     <a asp-action="Index">Back to List</a>
 </div>
+
+<footer class="border-top footer">
+    <div class="text-center">
+        Projekt wykonali:
+        <a href="https://github.com/Nokijoto">Rafał Wątroba</a>
+        i
+        <a href="https://github.com/kowu0">Remigiusz Wojak</a>
+    </div>
+</footer>
 
 @section Scripts {
     @{await Html.RenderPartialAsync("_ValidationScriptsPartial");}

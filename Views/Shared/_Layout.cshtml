@@ -13,31 +13,32 @@
 <body>
     <header>
         <nav class="navbar navbar-expand-sm navbar-toggleable-sm navbar-light bg-black border-bottom box-shadow mb-3">
-            <div class="container-fluid">
-                <a class="navbar-brand text-light" asp-area="" asp-controller="Home" asp-action="Index">Projekt_MVC</a>
+            <div class="container-fluid position-relative" >
+                <a class="navbar-brand text-light" asp-area="" asp-controller="Home" asp-action="Index">
+                    <img id="logo" src = "~/assets/krzak_logo_v2.png" />
+                </a>
                 <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target=".navbar-collapse" aria-controls="navbarSupportedContent"
                         aria-expanded="false" aria-label="Toggle navigation">
                     <span class="navbar-toggler-icon"></span>
                 </button>
                 <div class="navbar-collapse collapse d-sm-inline-flex justify-content-between">
-                    <ul class="navbar-nav flex-grow-1">
+                    <ul class="navbar-nav flex-grow-1 justify-content-center">
+                       
                         <li class="nav-item">
-                            <a class="nav-link text-light" asp-area="" asp-controller="Home" asp-action="Index">Home</a>
-                        </li>
-                        <li class="nav-item">
-                            <a class="nav-link text-light" asp-area="" asp-controller="Home" asp-action="Privacy">Privacy</a>
-                        </li>
-                         <li class="nav-item">
-                            <a class="nav-link text-light" asp-area="" asp-controller="SalonList" asp-action="Index">SalonList</a>
+                            <a class="nav-link text-light fw-bold" asp-area="" asp-controller="CarList" asp-action="Index">Samochody</a>
                         </li>
                         <li class="nav-item">
-                            <a class="nav-link text-light" asp-area="" asp-controller="CarList" asp-action="Index">Samochody</a>
+                            <a class="nav-link text-light fw-bold" asp-area="" asp-controller="TestDrive" asp-action="Index">Jazdy testowe</a>
                         </li>
                         <li class="nav-item">
-                            <a class="nav-link text-light" asp-area="" asp-controller="TestDrive" asp-action="Index">Jazdy testowe</a>
+                            <a class="nav-link text-light fw-bold" asp-area="" asp-controller="SalonList" asp-action="Index">Lista Salonów</a>
                         </li>
+                       
                     </ul>
                 </div>
+                <a class="navbar-brand text-light" asp-area="" asp-controller="Home" asp-action="Index">
+                    <img id="logoRafal" src="~/assets/Logotyp_Rafa_Watroba_w65575.png" />
+                </a>
             </div>
         </nav>
     </header>
@@ -47,11 +48,7 @@
         </main>
     </div>
 
-    <footer class="border-top footer text-muted">
-        <div class="container">
-            &copy; 2022 - Projekt Programowanie - <a asp-area="" asp-controller="Home" asp-action="Privacy">Privacy</a>
-        </div>
-    </footer>
+    
     <script src="~/lib/jquery/dist/jquery.min.js"></script>
     <script src="~/lib/bootstrap/dist/js/bootstrap.bundle.min.js"></script>
     <script src="~/js/site.js" asp-append-version="true"></script>

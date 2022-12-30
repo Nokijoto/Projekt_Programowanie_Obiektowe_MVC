@@ -1,64 +1,73 @@
 ﻿@model Projekt_MVC.Models.TDriveModel.CreateTestDriveViewModel
 @{
-    ViewData["Title"] = "NewTestDrive";
+    ViewData["Title"] = "Wypożycz auto";
    
 }
 
-<h4>CreateTestDriveViewModel</h4>
+<style>
+    body {
+        background-color: #D98179;
+    }
+</style>
+
+
+<h3 class="display-5 text-center link-dark fw-bold mb-3">Wypełnij formularz jazdy próbnej</h3>
 <hr />
-<div class="row">
+<div class="row justify-content-center">
     <div class="col-md-4">
         <form asp-controller="TestDrive" asp-action="CreateNewTestDrive">
             <div asp-validation-summary="ModelOnly" class="text-danger"></div>
             
-            <div class="form-group">
-                <label asp-for="Imie" class="control-label"></label>
-                <input asp-for="Imie" class="form-control" />
-                <span asp-validation-for="Imie" class="text-danger"></span>
+            <div class="form-group fw-bold">
+                <label asp-for="Imie" class="control-label mb-1"></label>
+                <input asp-for="Imie" class="form-control mb-1" />
+                <span asp-validation-for="Imie" class="text" id="danger"></span>
             </div>
-            <div class="form-group">
-                <label asp-for="Nazwisko" class="control-label"></label>
-                <input asp-for="Nazwisko" class="form-control" />
-                <span asp-validation-for="Nazwisko" class="text-danger"></span>
+            <div class="form-group fw-bold">
+                <label asp-for="Nazwisko" class="control-label mb-1"></label>
+                <input asp-for="Nazwisko" class="form-control mb-1" />
+                <span asp-validation-for="Nazwisko" class="text" id="danger"></span>
             </div>
-            <div class="form-group">
-                <label asp-for="Pesel" class="control-label"></label>
-                <input asp-for="Pesel" class="form-control" />
-                <span asp-validation-for="Pesel" class="text-danger"></span>
+            <div class="form-group fw-bold">
+                <label asp-for="Pesel" class="control-label mb-1"></label>
+                <input asp-for="Pesel" class="form-control mb-1" />
+                <span asp-validation-for="Pesel" class="text" id="danger"></span>
             </div>
-            <div class="form-group">
-                <label asp-for="Data" class="control-label"></label>
-                <input asp-for="Data" class="form-control" />
-                <span asp-validation-for="Data" class="text-danger"></span>
+            <div class="form-group fw-bold">
+                <label asp-for="Data" class="control-label mb-1"></label>
+                <input asp-for="Data" class="form-control mb-1" />
+                <span asp-validation-for="Data" class="text" id="danger"></span>
             </div>
-            <div class="form-group">
-                <label asp-for="NrTel" class="control-label"></label>
-                <input asp-for="NrTel" class="form-control" />
-                <span asp-validation-for="NrTel" class="text-danger"></span>
+            <div class="form-group fw-bold">
+                <label asp-for="NrTel" class="control-label mb-1"></label>
+                <input asp-for="NrTel" class="form-control mb-1" />
+                <span asp-validation-for="NrTel" class="text" id="danger"></span>
             </div>
-            <div class="form-group">
-                <label asp-for="CarID" class="control-label"></label>
-                <input asp-for="CarID" readonly class="form-control" value="@Model.CarID"/>
-                <span asp-validation-for="CarID" class="text-danger"></span>
+            <div class="form-group fw-bold">
+                <label asp-for="CarID" class="control-label mb-1"></label>
+                <input asp-for="CarID" readonly class="form-control mb-1 text-muted" value="@Model.CarID" />
+                <span asp-validation-for="CarID" class="text" id="danger"></span>
             </div>
-            @*<div class="form-group">
-                <label asp-for="car" class="control-label"></label>
-                <input asp-for="car.ID" readonly class="form-control" />
-               @* <input asp-for="car.Name" readonly class="form-control" />
-                <input asp-for="car.Description" readonly class="form-control" />
-                <input asp-for="car.Year" readonly class="form-control" />
-                <span asp-validation-for="car" class="text-danger"></span>
-            </div>*@
-            <div class="form-group">
-                <input type="submit" value="Create" class="btn btn-primary" />
+            <div class="form-group fw-bold">
+                <input type="submit" value="Zapisz" class="btn btn-primary btn-lg mx-auto d-block w-25" id="add" />
             </div>
         </form>
     </div>
 </div>
 
-<div>
+<div class="text-center">
+    <br />
     <a asp-action="Index">Back to List</a>
 </div>
+
+<footer class="border-top footer">
+    <div class="text-center">
+        Projekt wykonali:
+        <a href="https://github.com/Nokijoto">Rafał Wątroba</a>
+        i
+        <a href="https://github.com/kowu0">Remigiusz Wojak</a>
+    </div>
+</footer>
 
 @section Scripts {
     @{await Html.RenderPartialAsync("_ValidationScriptsPartial");}

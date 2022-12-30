@@ -1,61 +1,77 @@
 ﻿@model Projekt_MVC.Models.Car.CreateCarViewModel
 
-<h4>Dodaj samochód do bazy</h4>
+<style>
+    body {
+        background-color: #D98179;
+    }
+</style>
+
+
+<h3 class="display-5 text-center link-dark fw-bold mb-3">Dodaj samochód do bazy</h3>
 <hr />
-<div class="row">
+<div class="row justify-content-center">
     <div class="col-md-4">
         <form asp-controller="CarList" asp-action="CreateNewCar">
             <div asp-validation-summary="ModelOnly" class="text-danger"></div>
-            <div class="form-group">
-                <label asp-for="Name" class="control-label"></label>
-                <input asp-for="Name" class="form-control" />
-                <span asp-validation-for="Name" class="text-danger"></span>
+            <div class="form-group fw-bold">
+                <label asp-for="Name" class="control-label mb-1"></label>
+                <input asp-for="Name" class="form-control mb-1" />
+                <span asp-validation-for="Name" class="text" id="danger"></span>
             </div>
-            <div class="form-group">
-                <label asp-for="Model" class="control-label"></label>
-                <input asp-for="Model" class="form-control" />
-                <span asp-validation-for="Model" class="text-danger"></span>
+            <div class="form-group fw-bold">
+                <label asp-for="Model" class="control-label mb-1"></label>
+                <input asp-for="Model" class="form-control mb-1" />
+                <span asp-validation-for="Model"  class="text" id="danger"></span>
             </div>
-            <div class="form-group">
-                <label asp-for="Color" class="control-label"></label>
-                <input asp-for="Color" class="form-control" />
-                <span asp-validation-for="Color" class="text-danger"></span>
+            <div class="form-group fw-bold">
+                <label asp-for="Color" class="control-label mb-1"></label>
+                <input asp-for="Color" class="form-control mb-1" />
+                <span asp-validation-for="Color"  class="text" id="danger"></span>
             </div>
-            <div class="form-group">
-                <label asp-for="Year" class="control-label"></label>
-                <input asp-for="Year" class="form-control" />
-                <span asp-validation-for="Year" class="text-danger"></span>
+            <div class="form-group fw-bold">
+                <label asp-for="Year" class="control-label mb-1"></label>
+                <input asp-for="Year" class="form-control mb-1" />
+                <span asp-validation-for="Year"  class="text" id="danger"></span>
             </div>
-            <div class="form-group">
-                <label asp-for="Price" class="control-label"></label>
-                <input asp-for="Price" class="form-control" />
-                <span asp-validation-for="Price" class="text-danger"></span>
+            <div class="form-group fw-bold">
+                <label asp-for="Price" class="control-label mb-1"></label>
+                <input asp-for="Price" class="form-control mb-1" />
+                <span asp-validation-for="Price" class="text" id="danger"></span>
             </div>
-            <div class="form-group">
-                <label asp-for="Description" class="control-label"></label>
-                <input asp-for="Description" class="form-control" />
-                <span asp-validation-for="Description" class="text-danger"></span>
+            <div class="form-group fw-bold">
+                <label asp-for="Description" class="control-label mb-1"></label>
+                <input asp-for="Description" class="form-control mb-1" />
+                <span asp-validation-for="Description" class="text" id="danger"></span>
             </div>
-            <div class="form-group">
-                <label asp-for="HorsePower" class="control-label"></label>
-                <input asp-for="HorsePower" class="form-control" />
-                <span asp-validation-for="HorsePower" class="text-danger"></span>
+            <div class="form-group fw-bold">
+                <label asp-for="HorsePower" class="control-label mb-1"></label>
+                <input asp-for="HorsePower" class="form-control mb-1" />
+                <span asp-validation-for="HorsePower" class="text" id="danger"></span>
             </div>
-             <div class="form-group">
+            <div class="form-group fw-bold mb-1">
             <label for="mileage">Engine</label>
-            <select id="Engine" name="Engine" class="form-control" required asp-items="@Model.Engine"></select>
+            <select id="Engine" name="Engine" class="form-control mb-1" required asp-items="@Model.Engine"></select>
             </div>
             <div class="form-group">
-                <input type="submit" value="Create" class="btn btn-primary" />
+                <input type="submit" value="Dodaj" class="btn btn-primary btn-lg mx-auto d-block w-25" id="add" />
             </div>
         </form>
     </div>
 </div>
 
-<div>
+<div class="text-center">
+    <br />
     <a asp-action="Index">Back to List</a>
 </div>
 
+<footer class="border-top footer">
+    <div class="text-center">
+        Projekt wykonali:
+        <a href="https://github.com/Nokijoto">Rafał Wątroba</a>
+        i
+        <a href="https://github.com/kowu0">Remigiusz Wojak</a>
+    </div>
+</footer>
 @section Scripts {
     @{await Html.RenderPartialAsync("_ValidationScriptsPartial");}
 }

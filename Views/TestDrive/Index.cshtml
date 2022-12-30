@@ -4,6 +4,12 @@
     
 }
 
+<style>
+    body {
+        background-color: #D98179;
+    }
+</style>
+<h1 class="display-4 text-center link-dark fw-bold mb-5">Lista jazd testowych</h1>
 <table class="table">
     <thead>
         <tr>
@@ -13,7 +19,7 @@
             <th scope="row">Pesel</th>
             <th scope="row">Data</th>
             <th scope="row">nrTel<th>
-            <th scope="row">CarID<th>
+            <th scope="row">ID wypożyczonego auta<th>
         </tr>
     </thead>
     <tbody>
@@ -29,12 +35,19 @@
                 <th scope="row">@item.CarID</th>
                
                 <td>
-                   
-                    <a asp-controller="TestDrive" asp-action="DeleteTestDrive" asp-route-id="@item.ID">Delete</a>
-                    <a asp-controller="TestDrive" asp-action="EditTestDrive" asp-route-id="@item.ID">Edit</a>
+
+                    <a class="btn btn-primary btn-sm float-start" id="delete" asp-controller="TestDrive" asp-action="DeleteTestDrive" asp-route-id="@item.ID">Usuń jazdę</a>
+                    <a class="btn btn-primary btn-sm float-end" id="edit"  asp-controller="TestDrive" asp-action="EditTestDrive" asp-route-id="@item.ID">Edytuj jazdę</a>
                 </td>
             </tr>
         }
-        <a class="btn btn-primary btn-sm text-right" asp-area="" asp-controller="TestDrive" asp-action="NewTestDrive" role="button">Dodaj Jazde</a>
     </tbody>
 </table>
+<footer class="border-top footer">
+    <div class="text-center">
+        Projekt wykonali:
+        <a href="https://github.com/Nokijoto">Rafał Wątroba</a>
+        i
+        <a href="https://github.com/kowu0">Remigiusz Wojak</a>
+    </div>
+</footer>

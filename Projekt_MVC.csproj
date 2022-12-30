@@ -20,5 +20,9 @@
     <Folder Include="Views\Reservation\" />
   </ItemGroup>
 
+  <ItemGroup>
+    <None Include="wwwroot\css\StyleSheet.css" />
+  </ItemGroup>
+
 </Project>
   
