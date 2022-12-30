@@ -1,6 +1,6 @@
 ﻿@model Projekt_MVC.Models.Salon.SalonListViewModel
 @{
-    ViewData["Title"] = "SalonList";
+    ViewData["Title"] = "Lista Salonów";
 }
 <style>
     body {
@@ -21,7 +21,7 @@
             <th scope="row">Phone</th>
             <th scope="row">Email</th>
             <th scope="row">OpenHours</th>
-            <th scope="row">OpenDays</th>
+            <th scope="row">OpenDays<th>
         </tr>
     </thead>
     <tbody>
@@ -35,6 +35,7 @@
                 <th scope="row">@item.Email</th>
                 <th scope="row">@item.OpenHours</th>
                 <th scope="row">@item.OpenDays</th>
+
                 <td>
 
                     <a class="btn btn-primary btn-sm float-start" id="delete" asp-controller="SalonList" asp-action="DeleteSalonList" asp-route-id="@item.ID" role="button">Usuń salon</a>
