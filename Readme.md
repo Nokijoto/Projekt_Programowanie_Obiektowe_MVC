@@ -1,7 +1,7 @@
 # Testy Endpointów w programie Postman
 ## Lista Dostępnych endpointów
-Endpointy zwracają wartości w formie JSON
-**Enter**
+### Endpointy zwracają wartości w formie JSON
+
 ![Endpointy](/Testy/Edpointy.png)
 ## Endpoint 1
 ![Endpoint 1](/Testy/Endpoint1.png)
