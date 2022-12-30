@@ -7,7 +7,7 @@ namespace Projekt_MVC.Services.TestDrive
     public class TestDriveService : ITestDriveService
     {
         private readonly MainContext _TestDriveService;
-        private readonly Car.CarService _carService;
+        
 
         public TestDriveService(MainContext context)
         {

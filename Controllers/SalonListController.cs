@@ -151,7 +151,7 @@ namespace Projekt_MVC.Controllers
             catch (Exception ex)
             {
                 _logger.LogError(ex, "Error while getting salons");
-                return StatusCode((int)HttpStatusCode.InternalServerError);
+                return Json(new { Status = "Get Failed", ErrorMessage = ex.Message });
             }
         }
         [HttpDelete]
@@ -161,15 +161,15 @@ namespace Projekt_MVC.Controllers
             {
                 if (id == null)
                 {
-                    return NotFound();
+                    throw new Exception("Niepoprawne ID");
                 }
                 _SalonListService.DeleteSalon(id);
-                return Json(new { Success = true });
+                return Json(new { Status = "Delete Succesfull" });
             }
             catch (Exception ex)
             {
                 _logger.LogError(ex, "Error while deleting salons");
-                return StatusCode((int)HttpStatusCode.InternalServerError);
+                return Json(new { Status = "Delete Failed", ErrorMessage = ex.Message });
             }
         }
         [HttpPost]
@@ -180,18 +180,18 @@ namespace Projekt_MVC.Controllers
                 if (ModelState.IsValid)
                 {
                     _SalonListService.CreateSalon(name, address, phone, email, openhours, opendays);
-                    return Json(new { Success = true });
+                    return Json(new { Status = "Add Succesfull" });
                 }
                 else
                 {
-                    throw new Exception("Invalid model state");
+                    throw new Exception("Model is invalid");
                 }
                 
             }
             catch (Exception ex)
             {
                 _logger.LogError(ex, "Error while creating new salons");
-                return StatusCode((int)HttpStatusCode.InternalServerError);
+                return Json(new { Status = "Add Failed", ErrorMessage = ex.Message });
             }
         }
         [HttpPut]
@@ -200,12 +200,12 @@ namespace Projekt_MVC.Controllers
             try
             {
                 _SalonListService.EditSalonList(id, name, address, phone, email, openhours, opendays);
-                return Json(new { Success = true });
+                return Json(new { Status = "Edit Succesfull" });
             }
             catch (Exception ex)
             {
                 _logger.LogError(ex, "Error while editing salons");
-                return StatusCode((int)HttpStatusCode.InternalServerError);
+                return Json(new { Status = "Edit Failed", ErrorMessage = ex.Message });
             }
         }
 

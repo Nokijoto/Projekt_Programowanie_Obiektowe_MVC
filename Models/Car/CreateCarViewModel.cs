@@ -73,7 +73,7 @@ namespace Projekt_MVC.Models.Car
         [DataType(DataType.Text)]
         [RegularExpression(@"^[0-9]{1,3}", ErrorMessage = "Ilość koni musi składać się z 1-3 cyfr i być z przedziału 1-1000")]
 
-        [Range(10, 1000)]
+        [Range(10, 1000, ErrorMessage = "Ilość koni musi być z przedziału 1-1000")]
         public int HorsePower { get; set; }
     
     }

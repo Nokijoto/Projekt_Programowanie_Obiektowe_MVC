@@ -13,7 +13,7 @@
     <div class="col-md-4">
         <form method="post" asp-controller="CarList" asp-action="EditCarDetails">
             <div asp-validation-summary="ModelOnly" class="text-danger"></div>
-            <div class="form-group fw-bold">
+            <div class="form-group fw-bold" style="display:none">
                 <label asp-for="CarID" class="control-label mb-1"></label>
                 <input asp-for="CarID" readonly class="form-control mb-1" />
                 <span asp-validation-for="CarID" class="text" id="danger"></span>
@@ -58,7 +58,7 @@
                 <select id="Engine" name="Engine" class="form-control mb-1" required asp-items="@Model.Engine"></select>
             </div>
             <div class="form-group">
-                <input type="submit" value="Zapisz" class="btn btn-primary btn-lg mx-auto d-block w-50" id="add" />
+                <input type="submit" value="Zapisz" class="btn btn-primary btn-lg mx-auto d-block w-25" id="add" />
             </div>
         </form>
     </div>

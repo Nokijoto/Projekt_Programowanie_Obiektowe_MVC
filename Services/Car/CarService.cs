@@ -20,7 +20,7 @@ namespace Projekt_MVC.Services.Car
         {
             return _CarService.Cars.ToList();
         }
-        public void CreateCar(string name, string model, string color, string year, string price, string description, EngineEnum engine, int horsePower)
+        public bool CreateCar(string name, string model, string color, string year, string price, string description, EngineEnum engine, int horsePower)
         {
             var lastId = _CarService.Cars.OrderByDescending(x => x.CarID).FirstOrDefault()?.CarID;
             if (lastId != null)
@@ -39,8 +39,9 @@ namespace Projekt_MVC.Services.Car
                 };
                 _CarService.Cars.Add(newCar);
                 _CarService.SaveChanges();
+                return true;
             }
-            
+            return false;
         }
         public async void DeleteCar(int id)
         {
@@ -53,6 +54,7 @@ namespace Projekt_MVC.Services.Car
                 _CarService.Cars.Remove(Car);
                 _CarService.SaveChanges();
             }
+            
         }
 
         public CarModel GetCar(int id)
@@ -60,9 +62,9 @@ namespace Projekt_MVC.Services.Car
             return _CarService.Cars.FirstOrDefault(x => x.CarID == id) ?? new CarModel();
         }
 
-        public void EditCar(long id, string name, string model, string color, string year, string price, string description, EngineEnum engine, int horsePower)
+        public bool EditCar(long CarID, string name, string model, string color, string year, string price, string description, EngineEnum engine, int horsePower)
         {
-            var Car = _CarService.Cars.FirstOrDefault(x => x.CarID == id);
+            var Car = _CarService.Cars.FirstOrDefault(x => x.CarID == CarID);
             if(Car!=null)
             {
                 Car.Name = name;
@@ -75,7 +77,9 @@ namespace Projekt_MVC.Services.Car
                 Car.HorsePower = horsePower;
                 _CarService.Update(Car);
                 _CarService.SaveChanges();
+               return true;
             }
+            return false;
         }
     }
 }
