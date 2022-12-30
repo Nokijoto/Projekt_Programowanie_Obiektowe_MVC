@@ -60,12 +60,7 @@ namespace Projekt_MVC.Services.TestDrive
         public void EditTestDrive(long id, string imie, string nazwisko, string pesel, string data, int nrtel, int CarID)
         {
             var TD = _TestDriveService.TestDrives.FirstOrDefault(x => x.ID == id);
-            //var dataNowa = DateTime.Parse(TD.Data);
-            //var now = DateTime.Now;
-            //if (dataNowa < now)
-            //{
-            //    throw new Exception("Data nie może być wcześniejsza niż dzisiejsza");
-            //}
+    
             if (TD != null)
             {
                 TD.Imie = imie;

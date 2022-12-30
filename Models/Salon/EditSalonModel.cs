@@ -12,7 +12,7 @@ namespace Projekt_MVC.Models.Salon
         }
         public int ID { get; set; }
         [Required(ErrorMessage = "Nazwa jest wymagana")]
-        [StringLength(50, ErrorMessage = "Nazwa Salonu nie poprawna.")]
+        [StringLength(50, ErrorMessage = "Nazwa Salonu niepoprawna.")]
         [Display(Name = "Nazwa")]
         [DataType(DataType.Text)]
         [RegularExpression(@"^{3,50}$", ErrorMessage = "Nazwa Salonu nie jest poprawna.")]
@@ -20,13 +20,13 @@ namespace Projekt_MVC.Models.Salon
         [MaxLength(50, ErrorMessage = "Nazwa może zawierać najwięcej 50 znaków")]
         public string Name { get; set; }
 
-        [Required(ErrorMessage = "Adress jest wymagane")]
-        [StringLength(50, ErrorMessage = "Adress nie poprawne.")]
-        [Display(Name = "Adress")]
+        [Required(ErrorMessage = "Adres jest wymagany")]
+        [StringLength(50, ErrorMessage = "Adres nie poprawny.")]
+        [Display(Name = "Adres")]
         [DataType(DataType.Text)]
-        [RegularExpression(@"^{3,50}$", ErrorMessage = "Adress nie jest poprawny.")]
-        [MinLength(3, ErrorMessage = "Adress musi mieć conajmniej 3 znaki")]
-        [MaxLength(50, ErrorMessage = "Adress musi mieć najwiecej 50 znaków")]
+        [RegularExpression(@"^{3,50}$", ErrorMessage = "Adres nie jest poprawny.")]
+        [MinLength(3, ErrorMessage = "Adres musi mieć conajmniej 3 znaki")]
+        [MaxLength(50, ErrorMessage = "Adres musi mieć najwiecej 50 znaków")]
         public string Address { get; set; }
 
         [Required(ErrorMessage = "Numer telefonu jest wymagany")]
@@ -46,14 +46,14 @@ namespace Projekt_MVC.Models.Salon
         public string Email { get; set; }
 
         [Required(ErrorMessage = "Godziny otwarcia są wymagane")]
-        [StringLength(50, ErrorMessage = "Godziny otwarcia są nie poprawne.")]
+        [StringLength(50, ErrorMessage = "Godziny otwarcia są niepoprawne.")]
         [Display(Name = "Godziny Otwarcia")]
         [DataType(DataType.Text)]
         [RegularExpression(@"^[0-9-]{3,50}$", ErrorMessage = "Godziny otwarcia powinny mieć następujący format 8-16")]
         public string OpenHours { get; set; }
 
         [Required(ErrorMessage = "Dni otwarcia są wymagane")]
-        [StringLength(50, ErrorMessage = "Dni otwarcia są nie poprawne.")]
+        [StringLength(50, ErrorMessage = "Dni otwarcia są niepoprawne.")]
         [Display(Name = "Dni otwarcia")]
         [DataType(DataType.Text)]
         [RegularExpression(@"^{3,50}$", ErrorMessage = "Dni otwarcia powinny mieć następujący format pn-pt")]

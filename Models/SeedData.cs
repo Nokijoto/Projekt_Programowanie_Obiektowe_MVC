@@ -43,7 +43,7 @@ namespace Projekt_MVC.Models
                         Imie = "Robert",
                         Nazwisko = "Makłowicz",
                         Pesel = "00000000000",
-                        Data = "12-12-2022",
+                        Data = "2022-12-12",
                         NrTel = 123456789,
                         CarID=1
                     }
@@ -63,7 +63,7 @@ namespace Projekt_MVC.Models
                        Phone = "123456789",
                        OpenHours = "8:00 - 16:00",
                        OpenDays = "Poniedziałek - Piątek",
-                       Email = "testemail"
+                       Email = "testemail@testmail.com"
                        
                    }
 

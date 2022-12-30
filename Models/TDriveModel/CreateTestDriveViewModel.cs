@@ -1,7 +1,5 @@
-﻿using Microsoft.AspNetCore.Mvc.Rendering;
+﻿
 using Microsoft.EntityFrameworkCore;
-using Projekt_MVC.Models.Car;
-using System;
 using System.ComponentModel.DataAnnotations;
 
 namespace Projekt_MVC.Models.TDriveModel
@@ -9,15 +7,14 @@ namespace Projekt_MVC.Models.TDriveModel
     [Keyless]
     public class CreateTestDriveViewModel
     {
-        private DateTime dateTime = DateTime.UtcNow.Date;
-        private string date = DateTime.Now.ToString("yyyy-MM-dd");
+  
        
         public int CarID { get; set; }
 
         [Required(ErrorMessage = "Imie jest wymagane")]
         [Display(Name = "Imie")]
         [StringLength(50, ErrorMessage = "Imie nie może być dłuższe niż 50 znaków")]
-        [RegularExpression(@"^{3,50}", ErrorMessage = "Imie musi zaczynać się wielką literą")]
+        [RegularExpression(@"^{3,50}", ErrorMessage = "Imie musi mieć więcej niż 3 znaki")]
         [DataType(DataType.Text)]
         [MinLength(3, ErrorMessage = "Imie musi mieć minimum 3 znaki")]
         [MaxLength(50, ErrorMessage = "Imie nie może być dłuższe niż 50 znaków")]
@@ -28,7 +25,7 @@ namespace Projekt_MVC.Models.TDriveModel
         [Required(ErrorMessage = "Pole Nazwisko jest wymagane")]
         [Display(Name = "Nazwisko")]
         [StringLength(50, ErrorMessage = "Nazwisko nie może być dłuższe niż 50 znaków")]
-        [RegularExpression(@"^{3,50}", ErrorMessage = "Nazwisko musi zaczynać się wielką literą")]
+        [RegularExpression(@"^{3,50}", ErrorMessage = "Nazwisko musi mieć więcej niż 3 znaki")]
         [DataType(DataType.Text)]
         [MinLength(3, ErrorMessage = "Nazwisko musi mieć minimum 3 znaki")]
         [MaxLength(50, ErrorMessage = "Nazwisko nie może być dłuższe niż 50 znaków")]
@@ -60,11 +57,7 @@ namespace Projekt_MVC.Models.TDriveModel
 
         public int NrTel { get; set; }
        
-        // [Required(ErrorMessage = "Pole Samochód jest wymagane")]
-        //[Display(Name = "Samochód")]
-        // [DataType(DataType.Custom)]
 
-        //  public CarModel car { get; set; }
       
     }
     

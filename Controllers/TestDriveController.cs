@@ -1,11 +1,7 @@
 ﻿using Microsoft.AspNetCore.Mvc;
 using System.Net;
-using Microsoft.AspNetCore.Mvc.Rendering;
 using Projekt_MVC.Services.TestDrive;
 using Projekt_MVC.Models.TDriveModel;
-using Projekt_MVC.Models.Car;
-using System.Threading.Tasks.Dataflow;
-using Microsoft.EntityFrameworkCore.Storage.Internal;
 using Projekt_MVC.Services.Car;
 
 namespace Projekt_MVC.Controllers
@@ -15,12 +11,11 @@ namespace Projekt_MVC.Controllers
     {
         private readonly ILogger<TestDriveController> _logger;
         private readonly ITestDriveService _TestDriveService;
-        private readonly ICarService _carService;
-        public TestDriveController(ILogger<TestDriveController> logger, ITestDriveService TestDriveService,ICarService carService)
+        public TestDriveController(ILogger<TestDriveController> logger, ITestDriveService TestDriveService)
         {
             _logger = logger;
             _TestDriveService = TestDriveService;
-            _carService = carService;
+          
         }
         public IActionResult Index()
         {

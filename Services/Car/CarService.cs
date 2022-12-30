@@ -10,12 +10,6 @@ namespace Projekt_MVC.Services.Car
         {
             _CarService = context;
         }
-        //public List<CarModel> GetCars()
-        //{
-        //    return _context.Cars.ToList();
-        //}
-
-        // create function to get cars from database
         public List<CarModel> GetCars()
         {
             return _CarService.Cars.ToList();

@@ -12,9 +12,9 @@ namespace Projekt_MVC.Models.Car
         
         [Required(ErrorMessage = "Nazwa jest wymagana")]
         [StringLength(50, ErrorMessage = "Nazwa auta nie może byc dłuższa niż 50 znaków.")]
-        [Display(Name = "Nazwa Auta")]
+        [Display(Name = "Firma")]
         [DataType(DataType.Text)]
-        [RegularExpression(@"^{3,50}", ErrorMessage = "Nazwa auta musi zaczynać się wielką literą")]
+        [RegularExpression(@"^{3,50}", ErrorMessage = "Nazwa auta musi mieć od 3 do 50 znaków")]
         [MinLength(3, ErrorMessage = "Nazwa nie może być krótsza niż 3 litery")]
         [MaxLength(50, ErrorMessage = "Nazwa nie może być dłuższa niż 50 liter")]
         public string Name { get; set; }
@@ -29,12 +29,12 @@ namespace Projekt_MVC.Models.Car
         public string Model { get; set; }
 
         [Required(ErrorMessage = "Kolor jest wymagany")]
-        [StringLength(50, ErrorMessage = "Kolor nie może byc dłuższy niż 50 znaków.")]
+        [StringLength(50, ErrorMessage = "Nazwa nie może byc dłuższa niż 50 znaków.")]
         [Display(Name = "Kolor")]
         [DataType(DataType.Text)]
         [RegularExpression(@"^{3,50}", ErrorMessage = "Kolor musi zaczynać się wielką literą")]
-        [MinLength(3, ErrorMessage = "Kolor nie może być krótszy niż 3 litery")]
-        [MaxLength(50, ErrorMessage = "Kolor nie może być dłuższy niż 50 liter")]
+        [MinLength(3, ErrorMessage = "Nazwa nie może być krótsza niż 3 litery")]
+        [MaxLength(50, ErrorMessage = "Nazwa nie może być dłuższa niż 50 liter")]
 
         public string Color { get; set; }
 
@@ -50,8 +50,6 @@ namespace Projekt_MVC.Models.Car
         [Required(ErrorMessage = "Cena jest wymagana")]
         [Display(Name = "Price")]
         [DataType(DataType.Text)]
-        //  [RegularExpression(@"^[0-9]", ErrorMessage = "Price must be numbers")]
-        // [Range(10000, 100000)]
         public string Price { get; set; }
 
         [Required(ErrorMessage = "Opis jest wymagany")]

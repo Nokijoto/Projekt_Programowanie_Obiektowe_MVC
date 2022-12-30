@@ -1,6 +1,5 @@
 ﻿using Microsoft.AspNetCore.Mvc;
 using System.Net;
-
 using Projekt_MVC.Models.Car;
 using Projekt_MVC.Services.Car;
 using Microsoft.AspNetCore.Mvc.Rendering;
@@ -97,63 +96,7 @@ namespace Projekt_MVC.Controllers
             {
                 return StatusCode((int)HttpStatusCode.NotAcceptable, e.Message);
             }
-            //try
-            //{
-            //    if (ModelState.IsValid)
-            //    {
-            //        //if (horsePower < 0)
-            //        //{
-            //        //    ModelState.AddModelError("horsePower", "Horse power cannot be negative");
-            //        //    return View("NewCar");
-            //        //}
-            //        //if (year.Length >= 4)
-            //        //{
-            //        //    ModelState.AddModelError("year", "Year must be 4 digits");
-            //        //    return View("NewCar");
-            //        //}
-            //        //if (price.Length < 3)
-            //        //{
-            //        //    ModelState.AddModelError("price", "Price must be at least 3 digits");
-            //        //    return View("NewCar");
-            //        //}
-            //        //if (description.Length < 10)
-            //        //{
-            //        //    ModelState.AddModelError("description", "Description must be at least 10 characters");
-            //        //    return View("NewCar");
-            //        //}
-            //        //if (name.Length < 3)
-            //        //{
-            //        //    ModelState.AddModelError("name", "Name must be at least 3 characters");
-            //        //    return View("NewCar");
-            //        //}
-            //        //if (model.Length < 3)
-            //        //{
-            //        //    ModelState.AddModelError("model", "Model must be at least 3 characters");
-            //        //    return View("NewCar");
-            //        //}
-            //        //if (color.Length < 3)
-            //        //{
-            //        //    ModelState.AddModelError("color", "Color must be at least 3 characters");
-            //        //    return View("NewCar");
-            //        //}
-
-
-            //        _CarService.CreateCar(name, model, color, year, price, description, engine, horsePower);
-            //        return RedirectToAction("Index");
-
-            //    }
-            //    else
-            //    {
-            //        return View("NewCar");
-
-            //    }
-            //    //_CarService.CreateCar(name, model, color, year, price, description, engine, horsePower);
-            //    //return RedirectToAction("Index");
-            //}
-         
-           
-            //_CarService.CreateCar (name, model, color,year,price,description, engine, horsePower);
-            //return RedirectToAction("Index");
+            
         }
         
         public IActionResult DeleteCar(int id)
@@ -167,12 +110,7 @@ namespace Projekt_MVC.Controllers
             {
                 return StatusCode((int)HttpStatusCode.InternalServerError, e.Message);
             }
-            //if (id == null)
-            //{
-            //    return NotFound();
-            //}
-            //_CarService.DeleteCar(id);
-            //return RedirectToAction("Index");
+            
         }
 
         
@@ -203,15 +141,7 @@ namespace Projekt_MVC.Controllers
                         Value = item.ToString()
                     });
                 }
-                //foreach (var item in Enum.GetValues(typeof(EngineEnum)))
-                //{
-                //    model.Engine.Add(new SelectListItem()
-                //    {
-                //        Text = item.ToString(),
-                //        Value = item.ToString(),
-                //        Selected = item.ToString() == car.Engine.ToString()
-                //    });
-                //}
+                
 
                 return View(model);
             }
@@ -246,7 +176,7 @@ namespace Projekt_MVC.Controllers
                 return Json(new { Status = "Get Failed", ErrorMessage = e.Message });
             }
             
-            //return Json(new { Data = model }, JsonRequestBehavior.AllowGet);
+           
         }
 
         [HttpDelete]

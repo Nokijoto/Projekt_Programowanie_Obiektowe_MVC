@@ -28,12 +28,12 @@ namespace Projekt_MVC.Models.Car
         public string Model { get; set; }
 
         [Required(ErrorMessage = "Kolor jest wymagany")]
-        [StringLength(50, ErrorMessage = "Kolor nie może byc dłuższy niż 50 znaków.")]
+        [StringLength(50, ErrorMessage = "Nazwa nie może być dłuższa niż 50 znaków.")]
         [Display(Name = "Kolor")]
         [DataType(DataType.Text)]
         [RegularExpression(@"^{3,50}", ErrorMessage = "Kolor musi zaczynać się wielką literą")]
-        [MinLength(3, ErrorMessage = "Kolor nie może być krótszy niż 3 litery")]
-        [MaxLength(50, ErrorMessage = "Kolor nie może być dłuższy niż 50 liter")]
+        [MinLength(3, ErrorMessage = "Nazwa nie może być krótsza niż 3 litery")]
+        [MaxLength(50, ErrorMessage = "Nazwa nie może być dłuższa niż 50 liter")]
 
         public string Color { get; set; }
 
@@ -49,7 +49,7 @@ namespace Projekt_MVC.Models.Car
         [Required(ErrorMessage = "Cena jest wymagana")]
         [Display(Name = "Cena")]
         [DataType(DataType.Text)]
-        [RegularExpression(@"^[0-9]{0,50}", ErrorMessage = "Price must be numbers")]
+        [RegularExpression(@"^[0-9]{0,50}", ErrorMessage = "Cena musi być cyframi")]
         
         public string Price { get; set; }
 
@@ -62,8 +62,6 @@ namespace Projekt_MVC.Models.Car
         [MaxLength(50, ErrorMessage = "Opis nie może być dłuższy niż 50 liter")]
         public string Description { get; set; }
 
-        //[Required(ErrorMessage = "Engine is required.")]
-       // [Display(Name = "Engine")]
         
         public List<SelectListItem> Engine { get; set; }
 

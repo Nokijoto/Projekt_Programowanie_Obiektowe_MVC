@@ -29,21 +29,6 @@ namespace Projekt_MVC.Context
         }
 
 
-        //public DbSet<Projekt_MVC.Models.Car.CreateCarViewModel> CreateCarViewModel { get; set; }
-
-
-        //public DbSet<Projekt_MVC.Models.Car.EditCarViewModel> EditCarViewModel { get; set; }
-
-
-        //public DbSet<Projekt_MVC.Models.Salon.CreateSalonListViewModel> CreateSalonListViewModel { get; set; }
-
-
-        //public DbSet<Projekt_MVC.Models.Salon.EditSalonModel> EditSalonModel { get; set; }
-
-
-        //public DbSet<Projekt_MVC.Models.TDriveModel.CreateTestDriveViewModel> CreateTestDriveViewModel { get; set; }
-
-
-        //public DbSet<Projekt_MVC.Models.TDriveModel.EditTestDriveModel> EditTestDriveModel { get; set; }
+        
     }
 }

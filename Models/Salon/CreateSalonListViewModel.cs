@@ -16,13 +16,13 @@ namespace Projekt_MVC.Models.Salon
         [MaxLength(50, ErrorMessage = "Nazwa może zawierać najwięcej 50 znaków")]
         public string Name { get; set; }
 
-        [Required(ErrorMessage = "Adress jest wymagane")]
-        [StringLength(50, ErrorMessage = "Adress nie poprawne.")]
-        [Display(Name = "Adress")]
+        [Required(ErrorMessage = "Adres jest wymagany")]
+        [StringLength(50, ErrorMessage = "Adres nie poprawny.")]
+        [Display(Name = "Adres")]
         [DataType(DataType.Text)]
-        [RegularExpression(@"^{3,50}$", ErrorMessage = "Adress nie jest poprawny.")]
-        [MinLength(3, ErrorMessage = "Adress musi mieć conajmniej 3 znaki")]
-        [MaxLength(50, ErrorMessage = "Adress musi mieć najwiecej 50 znaków")]
+        [RegularExpression(@"^{3,50}$", ErrorMessage = "Adres nie jest poprawny.")]
+        [MinLength(3, ErrorMessage = "Adres musi mieć conajmniej 3 znaki")]
+        [MaxLength(50, ErrorMessage = "Adres musi mieć najwiecej 50 znaków")]
         public string Address { get; set; }
 
         [Required(ErrorMessage = "Numer telefonu jesat wymagany")]
