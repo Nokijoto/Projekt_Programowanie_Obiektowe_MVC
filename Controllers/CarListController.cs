@@ -220,11 +220,12 @@ namespace Projekt_MVC.Controllers
                 return StatusCode((int)HttpStatusCode.InternalServerError, e.Message);
             }
         }
-    
-        public IActionResult EditCarDetails(long id, string name, string model, string color, string year, string price, string description, EngineEnum engine, int horsePower)
+        
+        public IActionResult EditCarDetails(long CarID, string name, string model, string color, string year, string price, string description, EngineEnum engine, int horsePower)
         {
 
-            _CarService.EditCar(id, name, model, color, year, price, description, engine, horsePower);
+            _CarService.EditCar(CarID, name, model, color, year, price, description, engine, horsePower);
+
             return RedirectToAction("Index");
         }
 
@@ -232,11 +233,19 @@ namespace Projekt_MVC.Controllers
         [HttpGet]
         public async Task<ActionResult> GetCarsListJson()
         {
-            var model =  new CarViewModel()
+            try
             {
-                Cars = _CarService.GetCars()
-            };
-            return Json(model);
+                var model = new CarViewModel()
+                {
+                    Cars = _CarService.GetCars()
+                };
+                return Json(model);
+            }
+            catch (Exception e)
+            {
+                return Json(new { Status = "Get Failed", ErrorMessage = e.Message });
+            }
+            
             //return Json(new { Data = model }, JsonRequestBehavior.AllowGet);
         }
 
@@ -247,14 +256,16 @@ namespace Projekt_MVC.Controllers
             {
                 if (id == null)
                 {
-                    return Json(new { Error= "ID is null" });
+                    throw new Exception("Niepoprawne ID");
+                   
+                    
                 }
                 _CarService.DeleteCar(id);
-                return Json(new { Success = true });
+                return Json(new { Status = "Delete Succesfull"});
             }
             catch (Exception e)
             {
-                return StatusCode((int)HttpStatusCode.InternalServerError, e.Message);
+                return Json(new { Status = "Delete Failed", ErrorMessage = e.Message });
             }
         }
         [HttpPost]
@@ -269,31 +280,49 @@ namespace Projekt_MVC.Controllers
                         throw new Exception("Cena nie mniejsza niż 0");
                     }
                     _CarService.CreateCar(name, model, color, year, price, description, engine, horsePower);
-                    return Json(new { Success = true });
+                    return Json(new { Status = "Add Succesfull" });
 
                 }
                 else
                 {
-                    return Json(new { Success = false });
+                    throw new Exception("Model is invalid");
 
                 }
             }
             catch (Exception e)
             {
-                return StatusCode((int)HttpStatusCode.NotAcceptable, e.Message);
+                return Json(new { Status = "Add Failed", ErrorMessage = e.Message });
             }
         }
         [HttpPut]
-        public async Task<ActionResult> EditCarJson(long id, string name, string model, string color, string year, string price, string description, EngineEnum engine, int horsePower)
+        public async Task<ActionResult> EditCarJson(long CarID, string name, string model, string color, string year, string price, string description, EngineEnum engine, int horsePower)
         {
             try
             {
-                _CarService.EditCar(id, name, model, color, year, price, description, engine, horsePower);
-                return Json(new { Success = true });
+                if (ModelState.IsValid)
+                {
+                    if (Int32.Parse(price) <= 0)
+                    {
+                        throw new Exception("Cena nie mniejsza niż 0");
+                    }
+                    if (_CarService.EditCar(CarID, name, model, color, year, price, description, engine, horsePower))
+                    {
+
+                        return Json(new { Status = "Edit Succesfull" });
+                    }
+                    else
+                    {
+                        throw new Exception("Bład edycji auta");
+                    }
+                }
+                else
+                {
+                    throw new Exception("Model is invalid");
+                }
             }
             catch (Exception e)
             {
-                return StatusCode((int)HttpStatusCode.InternalServerError, e.Message);
+                return Json(new { Status = "Edit Failed", ErrorMessage = e.Message });
             }
         }
     }

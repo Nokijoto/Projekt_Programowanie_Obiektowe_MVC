@@ -25,7 +25,7 @@ namespace Projekt_MVC.Models.Salon
         [MaxLength(50, ErrorMessage = "Adress musi mieć najwiecej 50 znaków")]
         public string Address { get; set; }
 
-        [Required]
+        [Required(ErrorMessage = "Numer telefonu jesat wymagany")]
         [StringLength(9, ErrorMessage = "Telefon musi składać się z 9 cyfr")]
         [Display(Name = "NrTelefonu")]
         [DataType(DataType.Text)]

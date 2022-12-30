@@ -1,0 +1,276 @@
+{
+	"info": {
+		"_postman_id": "836a0747-5d79-453f-8dae-1ff461e64f36",
+		"name": "SalonList",
+		"schema": "https://schema.getpostman.com/json/collection/v2.1.0/collection.json",
+		"_exporter_id": "21896802"
+	},
+	"item": [
+		{
+			"name": "Pobieranie Listy Salonów JSON",
+			"event": [
+				{
+					"listen": "test",
+					"script": {
+						"exec": [
+							"\r",
+							"pm.test(\"Status test\", function () {\r",
+							"    pm.response.to.have.status(200);\r",
+							"});\r",
+							"\r",
+							"\r",
+							"pm.test(\"Poprane pobranie listy \",function(){\r",
+							"   pm.expect(pm.response.text()).to.have;\r",
+							"});\r",
+							"\r",
+							"pm.test(\"Response time is less than 500ms\", function () {\r",
+							"    pm.expect(pm.response.responseTime).to.be.below(500);\r",
+							"});"
+						],
+						"type": "text/javascript"
+					}
+				}
+			],
+			"request": {
+				"method": "GET",
+				"header": [],
+				"url": {
+					"raw": "http://localhost:5110/SalonList/GetSalonListJSON",
+					"protocol": "http",
+					"host": [
+						"localhost"
+					],
+					"port": "5110",
+					"path": [
+						"SalonList",
+						"GetSalonListJSON"
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "Usuwanie Salonu z Listy",
+			"event": [
+				{
+					"listen": "test",
+					"script": {
+						"exec": [
+							"\r",
+							"pm.test(\"Status test\", function () {\r",
+							"    pm.response.to.have.status(200);\r",
+							"});\r",
+							"\r",
+							"\r",
+							"pm.test(\"Poprawne usunięcie\",function(){\r",
+							"   const response = pm.response.json();\r",
+							"    pm.expect(response).to.have.property(\"status\", \"Delete Succesfull\");\r",
+							"});\r",
+							"\r",
+							"pm.test(\"Response time is less than 500ms\", function () {\r",
+							"    pm.expect(pm.response.responseTime).to.be.below(500);\r",
+							"});"
+						],
+						"type": "text/javascript"
+					}
+				}
+			],
+			"request": {
+				"method": "DELETE",
+				"header": [],
+				"url": {
+					"raw": "http://localhost:5110/SalonList/DeleteSalonJSON?id=3",
+					"protocol": "http",
+					"host": [
+						"localhost"
+					],
+					"port": "5110",
+					"path": [
+						"SalonList",
+						"DeleteSalonJSON"
+					],
+					"query": [
+						{
+							"key": "id",
+							"value": "3"
+						}
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "Edycja Danych Salonu Postmanem",
+			"event": [
+				{
+					"listen": "prerequest",
+					"script": {
+						"exec": [
+							""
+						],
+						"type": "text/javascript"
+					}
+				},
+				{
+					"listen": "test",
+					"script": {
+						"exec": [
+							"\r",
+							"pm.test(\"Status test\", function () {\r",
+							"    pm.response.to.have.status(200);\r",
+							"});\r",
+							"\r",
+							"\r",
+							"pm.test(\"Poprawna edycja\",function(){\r",
+							"   const response = pm.response.json();\r",
+							"    pm.expect(response).to.have.property(\"status\", \"Edit Succesfull\");\r",
+							"});\r",
+							"\r",
+							"pm.test(\"Response time is less than 500ms\", function () {\r",
+							"    pm.expect(pm.response.responseTime).to.be.below(500);\r",
+							"});"
+						],
+						"type": "text/javascript"
+					}
+				}
+			],
+			"request": {
+				"method": "PUT",
+				"header": [],
+				"url": {
+					"raw": "http://localhost:5110/SalonList/EditSalonDetailsJSON?id=4&name=EdycjaPostmanem&address=PoPUT&phone=123456789&email=post@man.com&openhours=09-21&opendays=Środa-Czwartek",
+					"protocol": "http",
+					"host": [
+						"localhost"
+					],
+					"port": "5110",
+					"path": [
+						"SalonList",
+						"EditSalonDetailsJSON"
+					],
+					"query": [
+						{
+							"key": "id",
+							"value": "4"
+						},
+						{
+							"key": "name",
+							"value": "EdycjaPostmanem"
+						},
+						{
+							"key": "address",
+							"value": "PoPUT"
+						},
+						{
+							"key": "phone",
+							"value": "123456789"
+						},
+						{
+							"key": "email",
+							"value": "post@man.com"
+						},
+						{
+							"key": "openhours",
+							"value": "09-21"
+						},
+						{
+							"key": "opendays",
+							"value": "Środa-Czwartek"
+						}
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "Dodane Salonu JSON",
+			"event": [
+				{
+					"listen": "test",
+					"script": {
+						"exec": [
+							"\r",
+							"pm.test(\"Status test\", function () {\r",
+							"    pm.response.to.have.status(200);\r",
+							"});\r",
+							"\r",
+							"\r",
+							"pm.test(\"Poprawne dodanie\",function(){\r",
+							"   const response = pm.response.json();\r",
+							"    pm.expect(response).to.have.property(\"status\", \"Add Succesfull\");\r",
+							"});\r",
+							"\r",
+							"pm.test(\"Response time is less than 500ms\", function () {\r",
+							"    pm.expect(pm.response.responseTime).to.be.below(500);\r",
+							"});"
+						],
+						"type": "text/javascript"
+					}
+				}
+			],
+			"request": {
+				"method": "POST",
+				"header": [],
+				"url": {
+					"raw": "http://localhost:5110/SalonList/CreateNewSalonJSON?name=DodaniePostmanem&address=PoPOST&phone=123456789&email=post@man.com&openhours=03-24&opendays=Środa-Piątek",
+					"protocol": "http",
+					"host": [
+						"localhost"
+					],
+					"port": "5110",
+					"path": [
+						"SalonList",
+						"CreateNewSalonJSON"
+					],
+					"query": [
+						{
+							"key": "name",
+							"value": "DodaniePostmanem"
+						},
+						{
+							"key": "address",
+							"value": "PoPOST"
+						},
+						{
+							"key": "phone",
+							"value": "123456789"
+						},
+						{
+							"key": "email",
+							"value": "post@man.com"
+						},
+						{
+							"key": "openhours",
+							"value": "03-24"
+						},
+						{
+							"key": "opendays",
+							"value": "Środa-Piątek"
+						}
+					]
+				}
+			},
+			"response": []
+		}
+	],
+	"event": [
+		{
+			"listen": "prerequest",
+			"script": {
+				"type": "text/javascript",
+				"exec": [
+					""
+				]
+			}
+		},
+		{
+			"listen": "test",
+			"script": {
+				"type": "text/javascript",
+				"exec": [
+					""
+				]
+			}
+		}
+	]
+}

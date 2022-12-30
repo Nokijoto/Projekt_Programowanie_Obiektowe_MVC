@@ -75,7 +75,7 @@ table, table tbody tr, table thead th {
 }
 
 .text#danger {
-    color: #FF0000;
+    color: yellow/*#FF0000*/;
     border-radius: 3px;
     font-size: 15px;
     font-weight: lighter;

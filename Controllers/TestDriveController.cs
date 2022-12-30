@@ -67,9 +67,16 @@ namespace Projekt_MVC.Controllers
         {
             try
             {
-               
-                _TestDriveService.CreateTestDrive(imie, nazwisko, pesel, data, nrtel,CarID);
-               return RedirectToAction("Index");
+                if (ModelState.IsValid)
+                {
+                    _TestDriveService.CreateTestDrive(imie, nazwisko, pesel, data, nrtel, CarID);
+                    return RedirectToAction("Index");
+                }
+                else
+                {
+                    return RedirectToAction("NewTestDrive", new { imie = imie, nazwisko = nazwisko, pesel = pesel, data = data, nrtel = nrtel, CarID = CarID });
+                    
+                }
             }
             catch (Exception ex)
             {
@@ -150,12 +157,19 @@ namespace Projekt_MVC.Controllers
         [HttpGet]
         public async Task<ActionResult> GetTestDrivesJson()
         {
-            var model = new TestDriveViewModel()
+            try
             {
-                TestDrives = _TestDriveService.GetTestDrives()
-            };
-            return Json(model);
-            //return Json(new { Data = model }, JsonRequestBehavior.AllowGet);
+                var model = new TestDriveViewModel()
+                {
+                    TestDrives = _TestDriveService.GetTestDrives()
+                };
+                return Json(model);
+            }
+            catch (Exception ex)
+            {
+                _logger.LogError(ex, "Error while getting test drives");
+                return Json(new { Status = "Get Failed", StatusCode = StatusCode((int)HttpStatusCode.InternalServerError), ErrorMessage = ex.Message });
+            }
         }
 
         [HttpDelete]
@@ -167,16 +181,13 @@ namespace Projekt_MVC.Controllers
                 if (id == null || id <=0)
                 {
                     throw new Exception("Niepoprawny ID");
-                     
-                    
                 }
                 _TestDriveService.DeleteTestDrive(id);
-                return Json(new { Success = true });
+                return Json(new { Status = "Delete Succesful" });
             }
             catch (Exception e)
             {
-                return Json(new { Error = "ID is null" ,StatusCode= StatusCode((int)HttpStatusCode.InternalServerError), ErrorM= e.Message
-            });
+                return Json(new { Status = "Delete Failed" ,StatusCode= StatusCode((int)HttpStatusCode.InternalServerError), ErrorMessage= e.Message});
             }
 
         }
@@ -185,21 +196,13 @@ namespace Projekt_MVC.Controllers
         {
             try
             {
-                var dataNowa = DateTime.Parse(data);
-                var now = DateTime.Now;
-               
-                //if (dataNowa < now)
-                //{
-                //    throw new Exception("Data nie może być wcześniejsza niż dzisiejsza");
-                //}
-
                 _TestDriveService.CreateTestDrive(imie, nazwisko, pesel, data, nrtel,CarID);
-                return Json(new { Success = true });
+                return Json(new { Status = "Add Succesful" });
             }
             catch (Exception ex)
             {
 
-                return Json(new { Success = false, Rason = ex.Message });
+                return Json(new { Status = "Add Failed", StatusCode = StatusCode((int)HttpStatusCode.InternalServerError), ErrorMessage = ex.Message });
             }
         }
         [HttpPut]
@@ -208,11 +211,11 @@ namespace Projekt_MVC.Controllers
             try
             {
                 _TestDriveService.EditTestDrive(id, imie, nazwisko, pesel, data, nrtel,CarID);
-                return Json(new { Success = true });
+                return Json(new { Status = "Edit Succesful" });
             }
             catch (Exception e)
             {
-                return Json(new { Success = false, Rason = e.Message });
+                return Json(new { Status = "Edit Failed", StatusCode = StatusCode((int)HttpStatusCode.InternalServerError), ErrorMessage = e.Message });
             }
         }
     }

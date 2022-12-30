@@ -12,7 +12,7 @@
     <div class="col-md-4">
         <form method="post" asp-controller="SalonList" asp-action="EditSalonDetails">
             <div asp-validation-summary="ModelOnly" class="text-danger"></div>
-            <div class="form-group fw-bold">
+            <div class="form-group fw-bold" style="display:none">
                 <label asp-for="ID" class="control-label mb-1"></label>
                 <input asp-for="ID" readonly class="form-control mb-1" />
                 <span asp-validation-for="ID" class="text" id="danger"></span>

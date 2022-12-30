@@ -1,0 +1,430 @@
+{
+	"info": {
+		"_postman_id": "d8a93235-85a1-4fef-999c-111319bd4c42",
+		"name": "CarList",
+		"schema": "https://schema.getpostman.com/json/collection/v2.1.0/collection.json",
+		"_exporter_id": "21896802"
+	},
+	"item": [
+		{
+			"name": "Pobranie Listy Aut Jako JSON",
+			"event": [
+				{
+					"listen": "test",
+					"script": {
+						"exec": [
+							"\r",
+							"pm.test(\"Status test\", function () {\r",
+							"    pm.response.to.have.status(200);\r",
+							"}); \r",
+							"pm.test(\"Znajduje sie auto Aston Martin\",function(){\r",
+							"\r",
+							"    const asd = pm.response.json();\r",
+							"    console.log(asd);\r",
+							"   asd.forEach(element =>pm.expect(element).to.have.property(\"name\", \"Astona\") &&pm.expect(element).to.have.property(\"model\", \"Martin\"));\r",
+							"});\r",
+							"\r",
+							"pm.test(\"Response time is less than 500ms\", function () {\r",
+							"    pm.expect(pm.response.responseTime).to.be.below(500);\r",
+							"});\r",
+							""
+						],
+						"type": "text/javascript"
+					}
+				}
+			],
+			"request": {
+				"method": "GET",
+				"header": [],
+				"url": {
+					"raw": "http://localhost:5110/CarList/GetCarsListJson",
+					"protocol": "http",
+					"host": [
+						"localhost"
+					],
+					"port": "5110",
+					"path": [
+						"CarList",
+						"GetCarsListJson"
+					]
+				}
+			},
+			"response": [
+				{
+					"name": "Pobranie Listy Aut Jako JSON",
+					"originalRequest": {
+						"method": "GET",
+						"header": [],
+						"url": {
+							"raw": "http://localhost:5110/CarList/GetCarsListJson",
+							"protocol": "http",
+							"host": [
+								"localhost"
+							],
+							"port": "5110",
+							"path": [
+								"CarList",
+								"GetCarsListJson"
+							]
+						}
+					},
+					"status": "OK",
+					"code": 200,
+					"_postman_previewlanguage": "json",
+					"header": [
+						{
+							"key": "Content-Type",
+							"value": "application/json; charset=utf-8"
+						},
+						{
+							"key": "Date",
+							"value": "Wed, 28 Dec 2022 19:27:44 GMT"
+						},
+						{
+							"key": "Server",
+							"value": "Kestrel"
+						},
+						{
+							"key": "Transfer-Encoding",
+							"value": "chunked"
+						}
+					],
+					"cookie": [],
+					"body": "{\n    \"cars\": [\n        {\n            \"id\": 1,\n            \"name\": \"Aston\",\n            \"model\": \"Martin\",\n            \"color\": \"Black\",\n            \"year\": \"2019\",\n            \"price\": \" 100000\",\n            \"description\": \"This is a Aston Martin\",\n            \"engine\": 1,\n            \"horsePower\": 500\n        },\n        {\n            \"id\": 6,\n            \"name\": \"FAJNE AUTO\",\n            \"model\": \"FAJNEY MODEL\",\n            \"color\": \"Czerwony\",\n            \"year\": \"2133\",\n            \"price\": \"100000\",\n            \"description\": \"FAJNE KUP PAN\",\n            \"engine\": 0,\n            \"horsePower\": 23\n        },\n        {\n            \"id\": 8,\n            \"name\": \"Hejtnapostman\",\n            \"model\": \"Sdsas\",\n            \"color\": \"Asd\",\n            \"year\": \"4234\",\n            \"price\": \"234\",\n            \"description\": \"ASDASD\",\n            \"engine\": 3,\n            \"horsePower\": 34\n        },\n        {\n            \"id\": 9,\n            \"name\": \"hejpostman3\",\n            \"model\": \"23423424\",\n            \"color\": \"234234\",\n            \"year\": \"4234\",\n            \"price\": \"234\",\n            \"description\": \"234\",\n            \"engine\": 2,\n            \"horsePower\": 543\n        },\n        {\n            \"id\": 10,\n            \"name\": \"siemakuba\",\n            \"model\": \"23423424\",\n            \"color\": \"234234\",\n            \"year\": \"4234\",\n            \"price\": \"234\",\n            \"description\": \"234\",\n            \"engine\": 2,\n            \"horsePower\": 543\n        },\n        {\n            \"id\": 11,\n            \"name\": \"FAJNE AUTO\",\n            \"model\": \"FAJNEY MODEL\",\n            \"color\": \"Czerwony\",\n            \"year\": \"2342\",\n            \"price\": \"10001\",\n            \"description\": \"FAJNE KUP PAN\",\n            \"engine\": 3,\n            \"horsePower\": 23\n        },\n        {\n            \"id\": 12,\n            \"name\": \"Bas\",\n            \"model\": \"Ads\",\n            \"color\": \"Asd\",\n            \"year\": \"3444\",\n            \"price\": \"34234\",\n            \"description\": \"Avaads\",\n            \"engine\": 3,\n            \"horsePower\": 432\n        },\n        {\n            \"id\": 13,\n            \"name\": \"Ładne\",\n            \"model\": \"ŁADNy\",\n            \"color\": \"Łóżowy\",\n            \"year\": \"1232\",\n            \"price\": \"0123\",\n            \"description\": \"ŁANDE\",\n            \"engine\": 3,\n            \"horsePower\": 999\n        },\n        {\n            \"id\": 14,\n            \"name\": \"siemachłopaki\",\n            \"model\": \"23423424\",\n            \"color\": \"234234\",\n            \"year\": \"4234\",\n            \"price\": \"234\",\n            \"description\": \"234\",\n            \"engine\": 2,\n            \"horsePower\": 543\n        },\n        {\n            \"id\": 16,\n            \"name\": \"siemachłopaki2\",\n            \"model\": \"23423424\",\n            \"color\": \"234234\",\n            \"year\": \"4234\",\n            \"price\": \"234\",\n            \"description\": \"234\",\n            \"engine\": 2,\n            \"horsePower\": 543\n        },\n        {\n            \"id\": 17,\n            \"name\": \"siemachłopaki23\",\n            \"model\": \"23423424\",\n            \"color\": \"234234\",\n            \"year\": \"4234\",\n            \"price\": \"234\",\n            \"description\": \"234\",\n            \"engine\": 2,\n            \"horsePower\": 543\n        },\n        {\n            \"id\": 18,\n            \"name\": \"AutoEdytowanePostman\",\n            \"model\": \"PostmanEditCar\",\n            \"color\": \"Zielony\",\n            \"year\": \"2001\",\n            \"price\": \"2425\",\n            \"description\": \"AutoedytowanePrzezPostman\",\n            \"engine\": 1,\n            \"horsePower\": 999\n        },\n        {\n            \"id\": 19,\n            \"name\": \"AutoZPostmana\",\n            \"model\": \"PostmanCar\",\n            \"color\": \"Zielony\",\n            \"year\": \"2001\",\n            \"price\": \"7312\",\n            \"description\": \"AutoUtworzonePrzezPostman\",\n            \"engine\": 1,\n            \"horsePower\": 999\n        }\n    ]\n}"
+				}
+			]
+		},
+		{
+			"name": "Delete Cars Result JSON",
+			"event": [
+				{
+					"listen": "test",
+					"script": {
+						"exec": [
+							"\r",
+							"pm.test(\"Status test\", function () {\r",
+							"    pm.response.to.have.status(200);\r",
+							"});\r",
+							"\r",
+							"\r",
+							"\r",
+							"pm.test(\"Poprawne usunięcie\",function(){\r",
+							"   const response = pm.response.json();\r",
+							"    pm.expect(response).to.have.property(\"status\", \"Delete Succesfull\");\r",
+							"});\r",
+							"\r",
+							"pm.test(\"Response time is less than 500ms\", function () {\r",
+							"    pm.expect(pm.response.responseTime).to.be.below(500);\r",
+							"});"
+						],
+						"type": "text/javascript"
+					}
+				}
+			],
+			"request": {
+				"method": "DELETE",
+				"header": [
+					{
+						"key": "id",
+						"value": "15",
+						"type": "text"
+					}
+				],
+				"url": {
+					"raw": "http://localhost:5110/CarList/DeleteCarJson?id=",
+					"protocol": "http",
+					"host": [
+						"localhost"
+					],
+					"port": "5110",
+					"path": [
+						"CarList",
+						"DeleteCarJson"
+					],
+					"query": [
+						{
+							"key": "id",
+							"value": ""
+						}
+					]
+				}
+			},
+			"response": [
+				{
+					"name": "Example Delete",
+					"originalRequest": {
+						"method": "DELETE",
+						"header": [
+							{
+								"key": "id",
+								"value": "15",
+								"type": "text"
+							}
+						],
+						"url": {
+							"raw": "http://localhost:5110/CarList/DeleteCarJson/16",
+							"protocol": "http",
+							"host": [
+								"localhost"
+							],
+							"port": "5110",
+							"path": [
+								"CarList",
+								"DeleteCarJson",
+								"16"
+							]
+						}
+					},
+					"_postman_previewlanguage": null,
+					"header": null,
+					"cookie": [],
+					"body": null
+				}
+			]
+		},
+		{
+			"name": "Dodanie Auta JSON",
+			"event": [
+				{
+					"listen": "test",
+					"script": {
+						"exec": [
+							"\r",
+							"pm.test(\"Status test\", function () {\r",
+							"    pm.response.to.have.status(200);\r",
+							"});\r",
+							"\r",
+							"\r",
+							"\r",
+							"pm.test(\"Poprawne dodanie\",function(){\r",
+							"   const response = pm.response.json();\r",
+							"    pm.expect(response).to.have.property(\"status\", \"Add Succesfull\");\r",
+							"});\r",
+							"\r",
+							"pm.test(\"Response time is less than 500ms\", function () {\r",
+							"    pm.expect(pm.response.responseTime).to.be.below(500);\r",
+							"});"
+						],
+						"type": "text/javascript"
+					}
+				}
+			],
+			"request": {
+				"method": "POST",
+				"header": [],
+				"url": {
+					"raw": "http://localhost:5110/CarList/CreateCarJson?name=AutoZPostmana22&model=PostmanCar32&color=Zielony&year=2001&price=234&description=AutoUtworzonePrzezPostman&engine=Diesel&horsePower=999",
+					"protocol": "http",
+					"host": [
+						"localhost"
+					],
+					"port": "5110",
+					"path": [
+						"CarList",
+						"CreateCarJson"
+					],
+					"query": [
+						{
+							"key": "name",
+							"value": "AutoZPostmana22"
+						},
+						{
+							"key": "model",
+							"value": "PostmanCar32"
+						},
+						{
+							"key": "color",
+							"value": "Zielony"
+						},
+						{
+							"key": "year",
+							"value": "2001"
+						},
+						{
+							"key": "price",
+							"value": "234"
+						},
+						{
+							"key": "description",
+							"value": "AutoUtworzonePrzezPostman"
+						},
+						{
+							"key": "engine",
+							"value": "Diesel"
+						},
+						{
+							"key": "horsePower",
+							"value": "999"
+						}
+					]
+				}
+			},
+			"response": [
+				{
+					"name": "Dodanie Auta JSON z ujemną ceną",
+					"originalRequest": {
+						"method": "POST",
+						"header": [
+							{
+								"key": "Content-Type",
+								"name": "Content-Type",
+								"value": "application/x-www-form-urlencoded",
+								"type": "text"
+							}
+						],
+						"url": {
+							"raw": "http://localhost:5110/CarList/CreateCarJson?name=AutoZPostmana&model=PostmanCar&color=Zielony&year=2001&price=-234&description=AutoUtworzonePrzezPostman&engine=Diesel&horsePower=999",
+							"protocol": "http",
+							"host": [
+								"localhost"
+							],
+							"port": "5110",
+							"path": [
+								"CarList",
+								"CreateCarJson"
+							],
+							"query": [
+								{
+									"key": "name",
+									"value": "AutoZPostmana"
+								},
+								{
+									"key": "model",
+									"value": "PostmanCar"
+								},
+								{
+									"key": "color",
+									"value": "Zielony"
+								},
+								{
+									"key": "year",
+									"value": "2001"
+								},
+								{
+									"key": "price",
+									"value": "-234"
+								},
+								{
+									"key": "description",
+									"value": "AutoUtworzonePrzezPostman"
+								},
+								{
+									"key": "engine",
+									"value": "Diesel"
+								},
+								{
+									"key": "horsePower",
+									"value": "999"
+								}
+							]
+						}
+					},
+					"_postman_previewlanguage": null,
+					"header": null,
+					"cookie": [],
+					"body": ""
+				}
+			]
+		},
+		{
+			"name": "Edycja Auta JSON",
+			"event": [
+				{
+					"listen": "test",
+					"script": {
+						"exec": [
+							"\r",
+							"pm.test(\"Status test\", function () {\r",
+							"    pm.response.to.have.status(200);\r",
+							"});\r",
+							"\r",
+							"pm.test(\"Poprawna edycja\",function(){\r",
+							"   const response = pm.response.json();\r",
+							"    pm.expect(response).to.have.property(\"status\", \"Edit Succesfull\");\r",
+							"});\r",
+							"pm.test(\"Response time is less than 500ms\", function () {\r",
+							"    pm.expect(pm.response.responseTime).to.be.below(500);\r",
+							"});"
+						],
+						"type": "text/javascript"
+					}
+				}
+			],
+			"request": {
+				"method": "PUT",
+				"header": [],
+				"url": {
+					"raw": "http://localhost:5110/CarList/EditCarJson?CarID=5&name=AutoEdytowanesad&model=PostmanEditCarca&color=Zielony&year=2001&price=2432432&description=AutoedytowanePrzezPostman2&engine=Diesel&horsePower=999",
+					"protocol": "http",
+					"host": [
+						"localhost"
+					],
+					"port": "5110",
+					"path": [
+						"CarList",
+						"EditCarJson"
+					],
+					"query": [
+						{
+							"key": "CarID",
+							"value": "5"
+						},
+						{
+							"key": "name",
+							"value": "AutoEdytowanesad"
+						},
+						{
+							"key": "model",
+							"value": "PostmanEditCarca"
+						},
+						{
+							"key": "color",
+							"value": "Zielony"
+						},
+						{
+							"key": "year",
+							"value": "2001"
+						},
+						{
+							"key": "price",
+							"value": "2432432"
+						},
+						{
+							"key": "description",
+							"value": "AutoedytowanePrzezPostman2"
+						},
+						{
+							"key": "engine",
+							"value": "Diesel"
+						},
+						{
+							"key": "horsePower",
+							"value": "999"
+						}
+					]
+				}
+			},
+			"response": []
+		}
+	],
+	"event": [
+		{
+			"listen": "prerequest",
+			"script": {
+				"type": "text/javascript",
+				"exec": [
+					""
+				]
+			}
+		},
+		{
+			"listen": "test",
+			"script": {
+				"type": "text/javascript",
+				"exec": [
+					""
+				]
+			}
+		}
+	]
+}
