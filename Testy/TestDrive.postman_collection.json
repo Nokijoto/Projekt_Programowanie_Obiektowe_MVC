@@ -1,0 +1,255 @@
+{
+	"info": {
+		"_postman_id": "5ab02cbb-de58-48b8-9c7c-c2c07290c657",
+		"name": "TestDrive",
+		"schema": "https://schema.getpostman.com/json/collection/v2.1.0/collection.json",
+		"_exporter_id": "21896802"
+	},
+	"item": [
+		{
+			"name": "Dodanie Użytkownika Metodą Post",
+			"event": [
+				{
+					"listen": "test",
+					"script": {
+						"exec": [
+							"\r",
+							"pm.test(\"Status test\", function () {\r",
+							"    pm.response.to.have.status(200);\r",
+							"});\r",
+							"\r",
+							"\r",
+							"pm.test(\"Poprawne dodanie\",function(){\r",
+							"   const response = pm.response.json();\r",
+							"    pm.expect(response).to.have.property(\"status\", \"Add Succesful\");\r",
+							"});\r",
+							"\r",
+							"pm.test(\"Response time is less than 500ms\", function () {\r",
+							"    pm.expect(pm.response.responseTime).to.be.below(500);\r",
+							"});\r",
+							"\r",
+							""
+						],
+						"type": "text/javascript"
+					}
+				}
+			],
+			"request": {
+				"method": "POST",
+				"header": [],
+				"url": {
+					"raw": "http://localhost:5110/TestDrive/CreateTestDriveJson?Imie=dominik&Nazwisko=tak&Pesel=12412312312&Data=2022-11-30&NrTel=123123123&CarID=99",
+					"protocol": "http",
+					"host": [
+						"localhost"
+					],
+					"port": "5110",
+					"path": [
+						"TestDrive",
+						"CreateTestDriveJson"
+					],
+					"query": [
+						{
+							"key": "ID",
+							"value": "10",
+							"disabled": true
+						},
+						{
+							"key": "Imie",
+							"value": "dominik"
+						},
+						{
+							"key": "Nazwisko",
+							"value": "tak"
+						},
+						{
+							"key": "Pesel",
+							"value": "12412312312"
+						},
+						{
+							"key": "Data",
+							"value": "2022-11-30"
+						},
+						{
+							"key": "NrTel",
+							"value": "123123123"
+						},
+						{
+							"key": "CarID",
+							"value": "99"
+						}
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "Lista Osób na Jazdę Testową",
+			"event": [
+				{
+					"listen": "test",
+					"script": {
+						"exec": [
+							"\r",
+							"pm.test(\"Status test\", function () {\r",
+							"    pm.response.to.have.status(200);\r",
+							"});\r",
+							"\r",
+							"\r",
+							"pm.test(\"Poprawne pobranie listy\",function(){\r",
+							"   const response = pm.response.json();\r",
+							"    pm.expect(response).to.have;\r",
+							"});\r",
+							"\r",
+							"pm.test(\"Response time is less than 500ms\", function () {\r",
+							"    pm.expect(pm.response.responseTime).to.be.below(500);\r",
+							"});"
+						],
+						"type": "text/javascript"
+					}
+				}
+			],
+			"request": {
+				"method": "GET",
+				"header": [],
+				"url": {
+					"raw": "http://localhost:5110/TestDrive/GetTestDrivesJson",
+					"protocol": "http",
+					"host": [
+						"localhost"
+					],
+					"port": "5110",
+					"path": [
+						"TestDrive",
+						"GetTestDrivesJson"
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "Edycja Jazdy Testowej",
+			"event": [
+				{
+					"listen": "test",
+					"script": {
+						"exec": [
+							"\r",
+							"pm.test(\"Status test\", function () {\r",
+							"    pm.response.to.have.status(200);\r",
+							"});\r",
+							"\r",
+							"\r",
+							"pm.test(\"Poprawna edycja\",function(){\r",
+							"   const response = pm.response.json();\r",
+							"    pm.expect(response).to.have.property(\"status\", \"Edit Succesful\");\r",
+							"});\r",
+							"\r",
+							"pm.test(\"Response time is less than 500ms\", function () {\r",
+							"    pm.expect(pm.response.responseTime).to.be.below(500);\r",
+							"});"
+						],
+						"type": "text/javascript"
+					}
+				}
+			],
+			"request": {
+				"method": "PUT",
+				"header": [],
+				"url": {
+					"raw": "http://localhost:5110/TestDrive/EditTestDriveJson?Id=5&Imie=dominik&Nazwisko=nie&Pesel=12312312323&Data=2022-12-30&NrTel=123123123&CarID=98",
+					"protocol": "http",
+					"host": [
+						"localhost"
+					],
+					"port": "5110",
+					"path": [
+						"TestDrive",
+						"EditTestDriveJson"
+					],
+					"query": [
+						{
+							"key": "Id",
+							"value": "5"
+						},
+						{
+							"key": "Imie",
+							"value": "dominik"
+						},
+						{
+							"key": "Nazwisko",
+							"value": "nie"
+						},
+						{
+							"key": "Pesel",
+							"value": "12312312323"
+						},
+						{
+							"key": "Data",
+							"value": "2022-12-30"
+						},
+						{
+							"key": "NrTel",
+							"value": "123123123"
+						},
+						{
+							"key": "CarID",
+							"value": "98"
+						}
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "Usuwanie Jazdy Testowej",
+			"event": [
+				{
+					"listen": "test",
+					"script": {
+						"exec": [
+							"\r",
+							"pm.test(\"Status test\", function () {\r",
+							"    pm.response.to.have.status(200);\r",
+							"});\r",
+							"\r",
+							"\r",
+							"pm.test(\"Poprawne usunięcie\",function(){\r",
+							"   const response = pm.response.json();\r",
+							"    pm.expect(response).to.have.property(\"status\", \"Delete Succesful\");\r",
+							"});\r",
+							"\r",
+							"pm.test(\"Response time is less than 500ms\", function () {\r",
+							"    pm.expect(pm.response.responseTime).to.be.below(500);\r",
+							"});"
+						],
+						"type": "text/javascript"
+					}
+				}
+			],
+			"request": {
+				"method": "DELETE",
+				"header": [],
+				"url": {
+					"raw": "http://localhost:5110/TestDrive/DeleteTestDriveJson?id=",
+					"protocol": "http",
+					"host": [
+						"localhost"
+					],
+					"port": "5110",
+					"path": [
+						"TestDrive",
+						"DeleteTestDriveJson"
+					],
+					"query": [
+						{
+							"key": "id",
+							"value": ""
+						}
+					]
+				}
+			},
+			"response": []
+		}
+	]
+}
